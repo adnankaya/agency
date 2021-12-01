@@ -1,3 +1,7 @@
 from django.db import models
 
-# Create your models here.
+# TODO Post and Question model's abstract parent class will be created.
+# class Publish(models.Model):
+
+#     class Meta:
+#         abstract = True

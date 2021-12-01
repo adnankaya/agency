@@ -15,4 +15,6 @@ urlpatterns = [
     path('sitemap.xml', sitemap_view, {'sitemaps': sitemaps},
          name='django.contrib.sitemaps.views.sitemap'),
    
+    path('qanda/', include('qanda.urls', namespace='qanda')),
+    path('', include('home.urls', namespace='home')),
 ]

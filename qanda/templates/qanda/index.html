@@ -1,0 +1,18 @@
+{% extends 'qanda/base.html' %}
+{% block qanda_content %}
+<h1 class="alert alert-primary">
+    Latest Q & A
+</h1>
+<ul>
+    {% for question in questions %}
+    <li class="list-group-item">
+        <h4>{{question.title}}</h4>
+        <p>{{question.body}}</p>
+        <div class="d-flex justify-content-between">
+            <small>{{question.author}}</small>
+            <small>{{question.publish}}</small>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
