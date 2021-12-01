@@ -1,7 +1,10 @@
 from django.db import models
 
-# TODO Post and Question model's abstract parent class will be created.
-# class Publish(models.Model):
+class Base(models.Model):
+    created_date = models.DateTimeField(auto_now_add=True)
+    updated_date = models.DateTimeField(auto_now=True)
 
-#     class Meta:
-#         abstract = True
+    objects = models.Manager()
+    class Meta:
+        abstract = True
+        default_manager_name = 'objects'

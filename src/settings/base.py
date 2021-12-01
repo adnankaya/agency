@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'blog',
     'home',
     'qanda',
+    'publish',
 ]
 
 MIDDLEWARE = [

@@ -102,9 +102,9 @@ def post_detail(request, year, month, day, slug):
 
     post = get_object_or_404(queryset(), slug=slug,
                              status='published',
-                             publish__year=year,
-                             publish__month=month,
-                             publish__day=day
+                             published_date__year=year,
+                             published_date__month=month,
+                             published_date__day=day
                              )
     # list of comments for this post
     comments = post.comments.filter(is_active=True)
@@ -134,7 +134,7 @@ def get_similar_posts(post: Post):
     similar_posts = Post.published.filter(
         tags__in=post_tags_ids).exclude(id=post.id)
     similar_posts = similar_posts.annotate(
-        same_tags=Count('tags')).order_by('-same_tags', '-publish')[:4]
+        same_tags=Count('tags')).order_by('-same_tags', '-published_date')[:4]
     return similar_posts
 
 

@@ -1,42 +1,32 @@
 from django.db import models
-from django.utils import timezone
-from django.contrib.auth.models import User
 from django.urls import reverse
-from taggit.managers import TaggableManager
 # internal
-from .managers import PublishedManager
 from core.utils import generate_slug
+from publish.models import Publish
+from .managers import PublishedManager
 
-
-class Post(models.Model):
+class Post(Publish):
     STATUS_CHOISES = (
         ('draft', 'Draft'),
         ('published', 'Published'),
     )
     title = models.CharField(max_length=250)
-    slug = models.CharField(max_length=250,
-                            unique_for_date='publish')
-    author = models.ForeignKey(User, on_delete=models.CASCADE,
-                               related_name='blog_posts')
     body = models.TextField()
-    publish = models.DateTimeField(default=timezone.now)
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
+
+    slug = models.CharField(max_length=250,
+                            unique_for_date='published_date')
+
     status = models.CharField(max_length=10, choices=STATUS_CHOISES,
                               default='draft')
 
-    objects = models.Manager()  # default manager
     published = PublishedManager()
-    tags = TaggableManager()
 
     class Meta:
-        ordering = ('-publish',)
         db_table = 't_blog'
-        default_manager_name = 'objects'
 
     def __str__(self):
         return self.title
-    
+
     def save(self, *args, **kwargs):
         self.slug = generate_slug(self.title)
         super(Post, self).save()
@@ -44,9 +34,9 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse('blog:post_detail',
                        args=[
-                           self.publish.year,
-                           self.publish.month,
-                           self.publish.day,
+                           self.published_date.year,
+                           self.published_date.month,
+                           self.published_date.day,
                            self.slug
                        ])
 
