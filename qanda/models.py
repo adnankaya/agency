@@ -14,6 +14,8 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 class Question(Publish):
     text = models.CharField(max_length=250)
     is_active = models.BooleanField(default=True)
+    slug = models.CharField(max_length=250,
+                            unique_for_date='published_date')
     rate = models.PositiveSmallIntegerField(default=1,
                                             validators=[
                                                 MaxValueValidator(5),
@@ -25,6 +27,19 @@ class Question(Publish):
 
     def __str__(self):
         return self.text
+
+    def get_absolute_url(self):
+        return reverse('qanda:question-detail',
+                       args=[
+                           self.published_date.year,
+                           self.published_date.month,
+                           self.published_date.day,
+                           self.slug
+                       ])
+
+    def save(self, *args, **kwargs):
+        self.slug = generate_slug(self.text)
+        super(Question, self).save()
 
 
 class Answer(Base):

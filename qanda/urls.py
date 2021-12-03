@@ -6,5 +6,7 @@ app_name = 'qanda'
 
 urlpatterns = [
 
-path('', views.qanda, name='qanda')
+    path('questions/', views.qanda, name='qanda'),
+    path('<int:year>/<int:month>/<int:day>/<slug:slug>/',
+         views.question_detail, name='question-detail'),
 ]

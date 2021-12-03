@@ -6,6 +6,7 @@ from core.utils import generate_slug
 from publish.models import Publish
 from .managers import PublishedManager
 
+
 class Post(Publish):
     STATUS_CHOISES = (
         ('draft', 'Draft'),

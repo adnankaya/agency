@@ -2,9 +2,7 @@
 {% load blog_tags %}
 {% block title %}{{ post.title }}{% endblock %}
 {% block blog_content %}
-<div style="margin-top: 5px;">
-    <a href='/blog'>Blog</a>
-</div>
+
 <h1>{{ post.title }}</h1>
 <p class="date">
     Published {{ post.published_date }} by {{ post.author }}

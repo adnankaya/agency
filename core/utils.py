@@ -1,8 +1,5 @@
-from unidecode import unidecode
-
+from slugify import slugify
 
 def generate_slug(word):
-    word = word.strip()
-    word = unidecode(word)
-    word = word.replace(' ', '-')
+    word = slugify(word)
     return word
