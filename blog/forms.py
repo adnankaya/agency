@@ -1,6 +1,12 @@
 from django import forms
 # internals
-from .models import Comment
+from .models import Comment, Post
+
+
+class PostForm(forms.Form):
+    class Meta:
+        model = Post
+        fields = ('title', 'body', 'status', 'tags')
 
 
 class EmailPostForm(forms.Form):
@@ -15,7 +21,6 @@ class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ('made_by', 'email', 'body')
-
 
 
 class SearchForm(forms.Form):

@@ -1,22 +1,30 @@
+from django.views import View
+from .forms import PostForm
 from django.contrib.postgres import search
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import (Paginator,
                                    EmptyPage,
                                    PageNotAnInteger)
-from django.views.generic import ListView
 from django.core.mail import send_mail
 from taggit.models import Tag
 from django.db.models import Count
 from django.utils.translation import gettext as _
 from django.http import HttpResponseRedirect
 from django.contrib import messages
-from django.contrib.postgres.search import (SearchVector,
-                                            SearchQuery,
-                                            SearchRank,
-                                            TrigramSimilarity)
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.views.generic import (
+    ListView,
+    DetailView,
+    CreateView,
+    UpdateView,
+    DeleteView
+)
+from django.contrib.auth.models import User
 # internals.
 from .models import Post, Comment
 from .forms import EmailPostForm, CommentForm, SearchForm
+from .search import (search_query, search_query_weighting,
+                     search_with_trigram_similarity)
 
 
 class PostListView(ListView):
@@ -28,28 +36,16 @@ class PostListView(ListView):
 # =============================================================================
 
 
-def search_with_trigram_similarity(query):
-    return Post.published.annotate(
-        similarity=TrigramSimilarity('title', query),
-    ).filter(similarity__gt=0.1).order_by('-similarity')
+class PostCreateView(CreateView):
+    model = Post
+    fields = ['title', 'body', 'status']
+    template_name = 'blog/post/new.html'
 
-
-def search_query_weighting(query):
-    s_vector = SearchVector('title', weight='A') + \
-        SearchVector('body', weight='B')
-    s_query = SearchQuery(query)
-    return Post.published.annotate(
-        rank=SearchRank(s_vector, s_query)
-    ).filter(rank__gte=0.3).order_by('-rank')
-
-
-def search_query(query):
-    s_vector = SearchVector('title', 'body')
-    s_query = SearchQuery(query)
-    return Post.published.annotate(
-        search=s_vector,
-        rank=SearchRank(s_vector, s_query)
-    ).filter(search=query).order_by('-rank')
+    def form_valid(self, form):
+        import ipdb; ipdb.set_trace()
+        # form.instance.author = self.request.user
+        form.instance.author = User.objects.first() # NOTE temporary
+        return super().form_valid(form)
 
 
 def post_search(request):

@@ -5,6 +5,8 @@ from core.models import Base
 from core.utils import generate_slug
 from publish.models import Publish
 from .managers import PublishedManager
+from ckeditor.fields import RichTextField
+
 
 
 class Post(Publish):
@@ -13,7 +15,7 @@ class Post(Publish):
         ('published', 'Published'),
     )
     title = models.CharField(max_length=250)
-    body = models.TextField()
+    body = RichTextField()
 
     slug = models.CharField(max_length=250,
                             unique_for_date='published_date')

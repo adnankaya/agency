@@ -3,6 +3,8 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
 from taggit.managers import TaggableManager
+from ckeditor.fields import RichTextField
+
 
 # internal
 from core.utils import generate_slug
@@ -45,7 +47,7 @@ class Question(Publish):
 class Answer(Base):
     author = models.ForeignKey(User, on_delete=models.CASCADE,
                                related_name="%(app_label)s_%(class)s_related")
-    body = models.TextField()
+    body = RichTextField()
     question = models.ForeignKey(Question, on_delete=models.CASCADE,
                                  related_name='answers')
 
