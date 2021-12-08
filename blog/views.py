@@ -42,7 +42,6 @@ class PostCreateView(CreateView):
     template_name = 'blog/post/new.html'
 
     def form_valid(self, form):
-        import ipdb; ipdb.set_trace()
         # form.instance.author = self.request.user
         form.instance.author = User.objects.first() # NOTE temporary
         return super().form_valid(form)

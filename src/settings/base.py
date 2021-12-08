@@ -29,12 +29,14 @@ INSTALLED_APPS = [
     'rest_framework',
     'ckeditor',
     'crispy_forms',
+    "crispy_bootstrap5",
 
     # my apps
     'blog',
     'home',
     'qanda',
     'publish',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -83,8 +85,12 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.2/howto/static-files/
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+LOGIN_REDIRECT_URL = 'home:index'
+LOGIN_URL = 'users:login'
+LOGOUT_REDIRECT_URL = "users:login"
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticroot')
