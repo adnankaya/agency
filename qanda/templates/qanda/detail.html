@@ -22,7 +22,7 @@
             <p class="info">
                 answer {{forloop.counter}} by {{answer.author}}
             </p>
-            {{answer.body|linebreaks}}
+            {{answer.body|markdown}}
         </div>
         {% empty %}
         <p>There are no answers yet.</p>

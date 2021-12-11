@@ -93,6 +93,10 @@ LOGIN_URL = 'users:login'
 LOGOUT_REDIRECT_URL = "users:login"
 
 STATIC_URL = '/static/'
+# STATICFILES_DIRS is the list of folders where Django will search for additional static files aside from the static folder of each app installed.
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'static/'),
+# ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticroot')
 
 # Default primary key field type

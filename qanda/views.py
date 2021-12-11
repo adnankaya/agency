@@ -36,7 +36,6 @@ def question_detail(request, year, month, day, slug):
     if request.method == 'POST':
         answer_form = AnswerForm(request.POST)
         if answer_form.is_valid():
-            import ipdb; ipdb.set_trace()
             # Create answer object but don't save to database yet
             new_answer = answer_form.save(commit=False)
             new_answer.question = question
