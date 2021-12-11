@@ -9,7 +9,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/">{{_('Home')}}</a>
+                    <a class="nav-link active" aria-current="page" href="{% url 'home:index' %}">{{_('Home')}}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'blog:post-list' %}">{{_('Blog')}}</a>
@@ -17,6 +17,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'qanda:qanda' %}">{{_('Q&A')}}</a>
                 </li>
+                {% if user.is_authenticated %}
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
@@ -31,33 +32,35 @@
                         <li><a class="dropdown-item" href="{% url 'users:logout' %}">{{_('Log Out')}}</a></li>
                     </ul>
                 </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'users:login' %}">{{_('Login')}}</a>
+                </li>
+                {% endif %}
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
                         {{_('Language')}}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         {% get_current_language as LANGUAGE_CODE %}
                         {% get_available_languages as LANGUAGES %}
                         {% get_language_info_list for LANGUAGES as languages %}
-                
+
                         {% for lang in languages %}
                         <li>
-                            <a class="dropdown-item" 
-                            href='/{{ lang.code }}/{{request.get_full_path|slice:"4:"}}'
-                            {% if lang.code == LANGUAGE_CODE %} class="selected"{% endif %}
-                            >
-                            {{ lang.name_local }}
-                          </a>
+                            <a class="dropdown-item{% if lang.code == LANGUAGE_CODE %} active {% endif %}"
+                                href='/{{ lang.code }}/{{request.get_full_path|slice:"4:"}}'>
+                                {{ lang.name_local }}
+                            </a>
                         </li>
                         {% endfor %}
                     </ul>
-
                 </li>
             </ul>
             <form class="d-flex">
                 <input class="form-control me-2" type="search" placeholder="{{_('Search')}}" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">{{_('Search')}}</button>
+                <button class="btn btn-outline-success btn-sm" type="submit">{{_('Search')}}</button>
             </form>
         </div>
     </div>

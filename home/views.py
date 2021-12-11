@@ -7,20 +7,6 @@ from django.utils.translation import get_language, activate, gettext
 
 
 def index(request):
-    trans = _('Hello')
-    msg = translate(msg='Hello', language='tr')
-    context = {
-        'trans': trans,
-        'msg': msg
-    }
+    context = {}
     return render(request, 'home/index.html', context=context)
 
-
-def translate(msg, language):
-    cur_language = get_language()
-    try:
-        activate(language)
-        text = gettext(msg)
-    finally:
-        activate(cur_language)
-    return text

@@ -15,9 +15,7 @@
 </head>
 
 <body>
-    {% if user.is_authenticated %}
-        {% include 'navbar.html' %}
-    {% endif %}
+    {% include 'navbar.html' %}
 
     <div class="container mt-4">
         {% block root_content %}

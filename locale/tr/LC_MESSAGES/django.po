@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-11 08:13+0300\n"
+"POT-Creation-Date: 2021-12-11 23:50+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,11 +17,61 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
+#: blog/templates/blog/base.html:18
+msgid "Subscribe to my RSS feed"
+msgstr "RSS akışına abone ol"
+
+#: blog/templates/blog/base.html:20
+msgid "Latest posts"
+msgstr "En son yayınlar"
+
+#: blog/templates/blog/base.html:22
+msgid "Most commented posts"
+msgstr "En çok yorum alan yayınlar"
+
+#: blog/templates/blog/base.html:32
+#, python-format
+msgid ""
+"\n"
+"                     %(total_posts)s post has been written so far.\n"
+"                     "
+msgid_plural ""
+"\n"
+"                     %(total_posts)s posts has been written so far.\n"
+"                    "
+msgstr[0] ""
+"\n"
+"                     Şimdiye kadar %(total_posts)s yayın yazıldı..\n"
+"                     "
+msgstr[1] ""
+"\n"
+"                     Şimdiye kadar %(total_posts)s yayın yazıldı..\n"
+"                     "
+
+#: blog/templates/blog/post/detail.html:9
+#, python-format
+msgid ""
+"\n"
+"        Published %(pub_date)s by %(author)s.\n"
+"    "
+msgstr ""
+"\n"
+"        %(author)s tarafından %(pub_date)s tarihinde yayınlandı .\n"
+"    "
+
+#: blog/templates/blog/post/list.html:5
+msgid "List of blog posts"
+msgstr "Blog yayınları listesi"
+
+#: blog/templates/blog/post/list.html:7
+msgid "Posts tagged with"
+msgstr ""
+
 #: blog/views.py:118
 msgid "Your comment has been added"
 msgstr "Yorumunuz kaydedildi."
 
-#: home/templates/home/index.html:10 home/views.py:10
+#: home/templates/home/index.html:7
 msgid "Hello"
 msgstr "Merhaba"
 
@@ -30,11 +79,11 @@ msgstr "Merhaba"
 msgid "Your answer has been added"
 msgstr "Cevabınız kaydedildi."
 
-#: src/settings/base.py:90
+#: src/settings/base.py:94
 msgid "English"
 msgstr ""
 
-#: src/settings/base.py:91
+#: src/settings/base.py:95
 msgid "Turkish"
 msgstr ""
 
@@ -50,74 +99,85 @@ msgstr ""
 msgid "Q&A"
 msgstr "Soru&Cevap"
 
-#: templates/navbar.html:23
+#: templates/navbar.html:24
 msgid "Menu"
 msgstr "Menü"
 
-#: templates/navbar.html:26
+#: templates/navbar.html:27
 msgid "New Blog Post"
 msgstr "Yeni Yayın"
 
-#: templates/navbar.html:31
+#: templates/navbar.html:32
 msgid "Log Out"
 msgstr "Çıkış Yap"
 
-#: templates/navbar.html:37
-msgid "Language"
-msgstr "Dil"
-
-#: templates/navbar.html:55 templates/navbar.html:56
-msgid "Search"
-msgstr "Ara"
-
-#: users/forms.py:9
-msgid "username or email"
-msgstr "Kullanıcı adı veya email"
-
-#: users/forms.py:10
-msgid "password"
-msgstr "parola"
-
-#: users/forms.py:22
-msgid "User not exist!"
-msgstr "Kullanıcı mevcut değil!"
-
-#: users/forms.py:25
-msgid "username or password is wrong!"
-msgstr "Kullanıcı adı veya parola yanlış!"
-
-#: users/forms.py:32
-msgid "Email"
-msgstr ""
-
-#: users/forms.py:34
-msgid "Enter your email."
-msgstr "Mail adresinizi giriniz."
-
-#: users/templates/users/login.html:11 users/templates/users/register.html:17
+#: templates/navbar.html:37 users/templates/users/login.html:38
+#: users/templates/users/register.html:30
 msgid "Login"
 msgstr "Giriş Yap"
 
-#: users/templates/users/login.html:15 users/templates/users/register.html:15
+#: templates/navbar.html:43
+msgid "Language"
+msgstr "Dil"
+
+#: templates/navbar.html:62 templates/navbar.html:63
+msgid "Search"
+msgstr "Ara"
+
+#: users/forms.py:23
+msgid "Email"
+msgstr ""
+
+#: users/forms.py:24
+msgid "Enter your email."
+msgstr "Mail adresinizi giriniz."
+
+#: users/templates/users/login.html:20 users/templates/users/register.html:44
+msgid "Welcome to the site!"
+msgstr "Siteye hoşgeldiniz!"
+
+#: users/templates/users/login.html:22 users/templates/users/register.html:46
+msgid "We wish you to have a nice moments in our site."
+msgstr "Sitemizde güzel vakit geçirmenizi dileriz."
+
+#: users/templates/users/login.html:42 users/templates/users/register.html:27
 msgid "Submit"
 msgstr "Gönder"
 
-#: users/templates/users/login.html:17 users/templates/users/register.html:11
+#: users/templates/users/login.html:45 users/templates/users/register.html:23
 msgid "Register"
 msgstr "Kaydol"
 
-#: users/templates/users/login.html:23
+#: users/templates/users/login.html:51
 msgid "Forgot password ?"
 msgstr "Parolanızı mı unuttunuz?"
 
-#: users/templates/users/login.html:23
+#: users/templates/users/login.html:52
 msgid "New Password"
 msgstr "Yeni Parola"
 
-#: users/templates/users/register.html:17
+#: users/templates/users/register.html:29
 msgid "Have account ?"
 msgstr "Hesabınız var mı?"
 
-#: users/views.py:19
+#: users/views.py:21
 msgid "{} is registered successfully. You can log in!"
 msgstr "{} başarıyla kaydoldu. Giriş yapabilirsiniz."
+
+#~ msgid "Total"
+#~ msgstr "Toplam"
+
+#~ msgid "posts"
+#~ msgstr "yayınlar"
+
+#~ msgid "username or email"
+#~ msgstr "Kullanıcı adı veya email"
+
+#~ msgid "password"
+#~ msgstr "parola"
+
+#~ msgid "User not exist!"
+#~ msgstr "Kullanıcı mevcut değil!"
+
+#~ msgid "username or password is wrong!"
+#~ msgstr "Kullanıcı adı veya parola yanlış!"

@@ -1,11 +1,14 @@
 {% extends "blog/base.html" %}
 {% load blog_tags %}
+{% load i18n %}
 {% block title %}{{ post.title }}{% endblock %}
 {% block blog_content %}
 
 <h1>{{ post.title }}</h1>
-<p class="date">
-    Published {{ post.published_date }} by {{ post.author }}
+<p class="text-muted">
+    {% blocktranslate with pub_date=post.published_date author=post.author %}
+        Published {{pub_date}} by {{author}}.
+    {% endblocktranslate %}
 </p>
 {{ post.body|markdown }}
 <p>

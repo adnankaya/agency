@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     "crispy_bootstrap5",
 
     # my apps
+    'core',
     'blog',
     'home',
     'qanda',
@@ -66,6 +67,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                
+                # internals
+                'blog.context_processors.get_total_posts',
             ],
         },
     },

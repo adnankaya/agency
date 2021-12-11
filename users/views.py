@@ -3,11 +3,13 @@ from django.shortcuts import render, redirect
 from django.contrib.admin.views.decorators import staff_member_required
 from django.conf import settings
 from django.contrib import messages
-from django.contrib.auth import login, logout
+from django.contrib.auth import login, logout, authenticate
 from django.utils.translation import gettext as _
 from django.views.generic.edit import View
+from django.contrib.auth.models import User
 # internals
 from .forms import CustomUserLoginForm, CustomUserCreationForm
+from core.models import Website
 
 
 def register_view(request):
@@ -20,7 +22,8 @@ def register_view(request):
             messages.success(request, msg)
             return redirect('users:login')
     context = {
-        'form': form
+        'form': form,
+        'website': Website.objects.first()
     }
     return render(request, 'users/register.html', context)
 
@@ -28,12 +31,18 @@ def register_view(request):
 def login_view(request):
     if request.user.is_authenticated:
         return redirect("/")
-    form = CustomUserLoginForm(request.POST or None)
+    form = CustomUserLoginForm(data=request.POST or None)
     if form.is_valid():
-        user_obj = form.cleaned_data.get("user_obj")
-        login(request, user_obj)
+        username = form.cleaned_data.get("username")
+        raw_pass = form.cleaned_data.get("password")
+        user = user = authenticate(request, username=username, password=raw_pass)
+        login(request, user)
         return redirect("/")
-    return render(request, "users/login.html", {"form": form})
+    context = {
+        'form': form,
+        'website': Website.objects.first()
+    }
+    return render(request, "users/login.html", context)
 
 
 def reset_password(request):
