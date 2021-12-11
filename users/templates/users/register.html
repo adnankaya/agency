@@ -8,13 +8,13 @@
             <form method="POST">
                 {% csrf_token %}
                 <fieldset class="form-group">
-                    <legend class="border-bottom mb-4">_('Register')</legend>
+                    <legend class="border-bottom mb-4">{{_('Register')}}</legend>
                     {{ form|crispy }}
                 </fieldset>
                 <div class="form-group my-2">
-                    <button class="btn btn-outline-primary" type="submit">_('Submit')</button>
+                    <button class="btn btn-outline-primary" type="submit">{{_('Submit')}}</button>
                     <small class="text-muted">
-                        Have account ? <a class="ml-2 disabled" href="{% url 'users:login' %}">Login</a>
+                        {{_('Have account ?')}} <a class="ml-2 disabled" href="{% url 'users:login' %}">{{_('Login')}}</a>
                     </small>
                 </div>
             </form>

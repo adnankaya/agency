@@ -1,5 +1,6 @@
 {% extends 'base.html'%}
 {% load static %}
+{% load i18n %}
 {% load crispy_forms_tags %}
 {% block root_content %}
 <div class="text-center">
@@ -7,19 +8,19 @@
         <form method="POST">
             {% csrf_token %}
             <fieldset class="form-group">
-                <legend class="border-bottom mb-4">_('Login')</legend>
+                <legend class="border-bottom mb-4">{{ _('Login') }}</legend>
                 {{ form|crispy }}
             </fieldset>
             <div class="form-group my-2">
-                <button class="btn btn-outline-primary" type="submit">_('Submit')</button>
+                <button class="btn btn-outline-primary" type="submit">{{_('Submit')}}</button>
                 <small class="text-muted">
-                    <a class="ml-2 disabled" href="{% url 'users:register' %}">Register</a>
+                    <a class="ml-2 disabled" href="{% url 'users:register' %}">{{_('Register')}}</a>
                 </small>
             </div>
         </form>
         <div class="border-top mt-3">
             <small class="text-muted">
-                Forgot password ? <a class="ml-2 disabled" href="{% url 'users:reset-password' %}">New Password</a>
+                {{_('Forgot password ?')}} <a class="ml-2 disabled" href="{% url 'users:reset-password' %}">{{_('New Password')}}</a>
             </small>
         </div>
     </div>

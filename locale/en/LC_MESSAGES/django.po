@@ -1,0 +1,123 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-11 08:13+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: blog/views.py:118
+msgid "Your comment has been added"
+msgstr ""
+
+#: home/templates/home/index.html:10 home/views.py:10
+msgid "Hello"
+msgstr ""
+
+#: qanda/views.py:44
+msgid "Your answer has been added"
+msgstr ""
+
+#: src/settings/base.py:90
+msgid "English"
+msgstr ""
+
+#: src/settings/base.py:91
+msgid "Turkish"
+msgstr ""
+
+#: templates/navbar.html:12
+msgid "Home"
+msgstr ""
+
+#: templates/navbar.html:15
+msgid "Blog"
+msgstr ""
+
+#: templates/navbar.html:18
+msgid "Q&A"
+msgstr ""
+
+#: templates/navbar.html:23
+msgid "Menu"
+msgstr ""
+
+#: templates/navbar.html:26
+msgid "New Blog Post"
+msgstr ""
+
+#: templates/navbar.html:31
+msgid "Log Out"
+msgstr ""
+
+#: templates/navbar.html:37
+msgid "Language"
+msgstr ""
+
+#: templates/navbar.html:55 templates/navbar.html:56
+msgid "Search"
+msgstr ""
+
+#: users/forms.py:9
+msgid "username or email"
+msgstr ""
+
+#: users/forms.py:10
+msgid "password"
+msgstr ""
+
+#: users/forms.py:22
+msgid "User not exist!"
+msgstr ""
+
+#: users/forms.py:25
+msgid "username or password is wrong!"
+msgstr ""
+
+#: users/forms.py:32
+msgid "Email"
+msgstr ""
+
+#: users/forms.py:34
+msgid "Enter your email."
+msgstr ""
+
+#: users/templates/users/login.html:11 users/templates/users/register.html:17
+msgid "Login"
+msgstr ""
+
+#: users/templates/users/login.html:15 users/templates/users/register.html:15
+msgid "Submit"
+msgstr ""
+
+#: users/templates/users/login.html:17 users/templates/users/register.html:11
+msgid "Register"
+msgstr ""
+
+#: users/templates/users/login.html:23
+msgid "Forgot password ?"
+msgstr ""
+
+#: users/templates/users/login.html:23
+msgid "New Password"
+msgstr ""
+
+#: users/templates/users/register.html:17
+msgid "Have account ?"
+msgstr ""
+
+#: users/views.py:19
+msgid "{} is registered successfully. You can log in!"
+msgstr ""
