@@ -24,7 +24,7 @@
                         {{_('Menu')}}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="{% url 'blog:post-create' %}">{{_('New Blog Post')}}</a></li>
+                        <li><a class="dropdown-item active" href="{% url 'blog:post-create' %}">{{_('New Blog Post')}}</a></li>
                         <li><a class="dropdown-item" href="#">Another action</a></li>
                         <li>
                             <hr class="dropdown-divider">
@@ -58,8 +58,8 @@
                     </ul>
                 </li>
             </ul>
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="{{_('Search')}}" aria-label="Search">
+            <form class="d-flex" method="GET" action="{% url 'blog:post-search' %}">
+                <input class="form-control me-2" type="search" name="query" placeholder="{{_('Search')}}" aria-label="Search">
                 <button class="btn btn-outline-success btn-sm" type="submit">{{_('Search')}}</button>
             </form>
         </div>

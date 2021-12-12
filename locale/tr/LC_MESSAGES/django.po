@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-11 23:50+0300\n"
+"POT-Creation-Date: 2021-12-12 17:07+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -59,15 +59,107 @@ msgstr ""
 "        %(author)s tarafından %(pub_date)s tarihinde yayınlandı .\n"
 "    "
 
-#: blog/templates/blog/post/list.html:5
+#: blog/templates/blog/post/list.html:6
 msgid "List of blog posts"
 msgstr "Blog yayınları listesi"
 
-#: blog/templates/blog/post/list.html:7
-msgid "Posts tagged with"
+#: blog/templates/blog/post/list.html:10
+#, python-format
+msgid ""
+"\n"
+"            Posts tagged with \"%(tag_name)s\"\n"
+"        "
+msgstr ""
+"\n"
+"            \"%(tag_name)s\" ile etiketlenen yayınlar\n"
+"        "
+
+#: blog/templates/blog/post/list.html:26
+msgid "Tags"
 msgstr ""
 
-#: blog/views.py:118
+#: blog/templates/blog/post/list.html:35 qanda/templates/qanda/detail.html:17
+#, python-format
+msgid ""
+"\n"
+"                    Published %(pub_date)s by %(author)s.\n"
+"                "
+msgstr ""
+"\n"
+"        %(author)s tarafından %(pub_date)s tarihinde yayınlandı .\n"
+"    "
+
+#: blog/templates/blog/post/search.html:5
+#, fuzzy
+#| msgid "Search"
+msgid "Search Page"
+msgstr "Ara"
+
+#: blog/templates/blog/post/search.html:9
+msgid "Search for posts"
+msgstr "Yayınlarda ara"
+
+#: blog/templates/blog/post/search.html:12
+#: blog/templates/blog/post/search.html:19 templates/navbar.html:62
+#: templates/navbar.html:63
+msgid "Search"
+msgstr "Ara"
+
+#: blog/templates/blog/post/search.html:14
+msgid "Select algorithm"
+msgstr "Algoritma seçiniz"
+
+#: blog/templates/blog/post/search.html:15
+msgid "Default"
+msgstr "Varsayılan"
+
+#: blog/templates/blog/post/search.html:16
+msgid "Weighting"
+msgstr ""
+
+#: blog/templates/blog/post/search.html:17
+msgid "Trigram"
+msgstr ""
+
+#: blog/templates/blog/post/search.html:25
+#, python-format
+msgid ""
+"\n"
+"                Posts containing \"%(_query)s\"\n"
+"            "
+msgstr ""
+"\n"
+"            \"%(_query)s\" içeren yayınlar \n"
+"        "
+
+#: blog/templates/blog/post/search.html:30
+#, python-format
+msgid ""
+"\n"
+"                Found %(_total)s result.\n"
+"                "
+msgid_plural ""
+"\n"
+"                Found %(_total)s results.\n"
+"            "
+msgstr[0] ""
+"\n"
+"        %(_total)s sonuç bulundu .\n"
+"    "
+msgstr[1] ""
+"\n"
+"        %(_total)s sonuç bulundu .\n"
+"    "
+
+#: blog/templates/blog/post/search.html:38
+msgid "seconds"
+msgstr "saniye"
+
+#: blog/templates/blog/post/search.html:49
+msgid "There are no results for your query."
+msgstr "Arama sorgunuz için sonuç yok."
+
+#: blog/views.py:136
 msgid "Your comment has been added"
 msgstr "Yorumunuz kaydedildi."
 
@@ -75,7 +167,54 @@ msgstr "Yorumunuz kaydedildi."
 msgid "Hello"
 msgstr "Merhaba"
 
-#: qanda/views.py:44
+#: qanda/templates/qanda/answer_form.html:3
+msgid "Add a new answer"
+msgstr "Yeni bir cevap ekle"
+
+#: qanda/templates/qanda/answer_form.html:8
+#: qanda/templates/qanda/question_form.html:12
+#: users/templates/users/login.html:42 users/templates/users/register.html:27
+msgid "Submit"
+msgstr "Gönder"
+
+#: qanda/templates/qanda/answers.html:10
+msgid "Author"
+msgstr "Yazar"
+
+#: qanda/templates/qanda/answers.html:11
+msgid "ago"
+msgstr "önce"
+
+#: qanda/templates/qanda/answers.html:16
+msgid "There are no answers yet."
+msgstr "Henüz cevap yok."
+
+#: qanda/templates/qanda/detail.html:13 qanda/templates/qanda/index.html:22
+msgid "answer"
+msgstr "cevap"
+
+#: qanda/templates/qanda/detail.html:43
+msgid "Similar questions"
+msgstr "Benzer sorular"
+
+#: qanda/templates/qanda/detail.html:49
+msgid "There are no similar questions yet."
+msgstr "Benzer soru yok."
+
+#: qanda/templates/qanda/index.html:6
+msgid "Latest Q & A"
+msgstr "Güncel Sorular & Cevaplar"
+
+#: qanda/templates/qanda/index.html:8
+#: qanda/templates/qanda/question_form.html:8
+msgid "Ask a New Question"
+msgstr "Yeni bir soru sor"
+
+#: qanda/templates/qanda/index.html:19
+msgid "Asked by"
+msgstr "Soran"
+
+#: qanda/views.py:64
 msgid "Your answer has been added"
 msgstr "Cevabınız kaydedildi."
 
@@ -89,7 +228,7 @@ msgstr ""
 
 #: templates/navbar.html:12
 msgid "Home"
-msgstr ""
+msgstr "Anasayfa"
 
 #: templates/navbar.html:15
 msgid "Blog"
@@ -120,10 +259,6 @@ msgstr "Giriş Yap"
 msgid "Language"
 msgstr "Dil"
 
-#: templates/navbar.html:62 templates/navbar.html:63
-msgid "Search"
-msgstr "Ara"
-
 #: users/forms.py:23
 msgid "Email"
 msgstr ""
@@ -139,10 +274,6 @@ msgstr "Siteye hoşgeldiniz!"
 #: users/templates/users/login.html:22 users/templates/users/register.html:46
 msgid "We wish you to have a nice moments in our site."
 msgstr "Sitemizde güzel vakit geçirmenizi dileriz."
-
-#: users/templates/users/login.html:42 users/templates/users/register.html:27
-msgid "Submit"
-msgstr "Gönder"
 
 #: users/templates/users/login.html:45 users/templates/users/register.html:23
 msgid "Register"

@@ -1,45 +1,56 @@
 {% extends "blog/base.html" %}
 {% load blog_tags %}
+{% load i18n %}
 
-{% block title %}Search{% endblock %}
+{% block title %}{{_('Search Page')}}{% endblock %}
 
 {% block blog_content %}
-{% if query %}
-<h1>Posts containing "{{ query }}"</h1>
-<h3>
-    {% with results.count as total_results %}
-    Found {{ total_results }} result{{ total_results|pluralize }}
-    {% endwith %}
-</h3>
+    <section class="card">
+        <h5 class="card-title alert alert-info p-3">{{_('Search for posts')}}</h5>
+        <div class="card-body">
+            <form class="d-flex" method="GET" action="{% url 'blog:post-search' %}">
+                <input class="form-control me-2" value="{%if query%}{{query}}{%endif%}" type="search" name="query" placeholder="{{_('Search')}}" aria-label="Search" />
+                <select name="search_algorithm" class="form-select form-select-sm me-2 w-50 h-100" aria-label=".form-select-sm searching">
+                    <option value="default" selected>{{_('Select algorithm')}}</option>
+                    <option value="default">{{_('Default')}}</option>
+                    <option value="weighting">{{_('Weighting')}}</option>
+                    <option value="trigram">{{_('Trigram')}}</option>
+                </select>
+                <button class="btn btn-primary btn-sm" type="submit">{{_('Search')}}</button>
+            </form>
+        </div>
+    </section>
+    <div class="d-flex justify-content-between my-3 bg-secondary text-light rounded p-2">
+        <h5>
+            {% blocktranslate with _query=query %}
+                Posts containing "{{ _query }}"
+            {% endblocktranslate %}
+        </h5>
+        <h6>
+            {% blocktranslate count results.count as _total %}
+                Found {{_total}} result.
+                {% plural %}
+                Found {{_total}} results.
+            {% endblocktranslate %}
+        </h6>
+    </div>
+    <div class="my-1">
+        <small>{{ elapsed_time }} {{ _('seconds')}}</small>
+    </div>
+    <div class="list-group">
+        {% for post in results %}
+        <div class="list-group-item">
+            <h4><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h4>
+            <p>
+                {{ post.body|markdown|truncatewords_html:5 }}
+            </p>
+        </div>
+        {% empty %}
+            <p>{{_('There are no results for your query.')}}</p>
+        {% endfor %}
+    </div>
 
-{% for post in results %}
-<h4><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h4>
-{{ post.body|markdown|truncatewords_html:5 }}
-{% empty %}
-<p>There are no results for your query.</p>
-{% endfor %}
-<hr />
-<h3>Weighting results</h3>
-{% for post in results_w %}
-<h4><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h4>
-{{ post.body|markdown|truncatewords_html:5 }}
-{% empty %}
-<p>There are no results for your query.</p>
-{% endfor %}
-<h3>Trigram results</h3>
-{% for post in results_trigram %}
-<h4><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h4>
-{{ post.body|markdown|truncatewords_html:5 }}
-{% empty %}
-<p>There are no results for your query.</p>
-{% endfor %}
-<hr />
-<p><a href="{% url 'blog:post_search' %}" style="background-color: rgb(228, 223, 223); padding: 10px;">Search again</a></p>
-{% else %}
-<h1>Search for posts</h1>
-<form method="get">
-    {{ form.as_p }}
-    <input type="submit" value="Search">
-</form>
-{% endif %}
+    
+
+
 {% endblock %}

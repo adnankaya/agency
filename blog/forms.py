@@ -24,4 +24,10 @@ class CommentForm(forms.ModelForm):
 
 
 class SearchForm(forms.Form):
+    ALGORITHMS = (
+        ("default","DEFAULT"),
+        ("weighting","WEIGHTING"),
+        ("trigram","TRIGRAM"),
+    )
     query = forms.CharField()
+    search_algorithm = forms.ChoiceField(choices=ALGORITHMS, required=False)

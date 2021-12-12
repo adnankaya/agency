@@ -12,6 +12,8 @@ from django.utils.translation import gettext as _
 from django.http import HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.template.response import TemplateResponse
+from django.contrib.auth.decorators import login_required
 from django.views.generic import (
     ListView,
     DetailView,
@@ -19,6 +21,7 @@ from django.views.generic import (
     UpdateView,
     DeleteView
 )
+from timeit import default_timer as timer
 from django.contrib.auth.models import User
 # internals.
 from .models import Post, Comment
@@ -42,28 +45,43 @@ class PostCreateView(CreateView):
     template_name = 'blog/post/new.html'
 
     def form_valid(self, form):
-        # form.instance.author = self.request.user
-        form.instance.author = User.objects.first() # NOTE temporary
+        form.instance.author = self.request.user
         return super().form_valid(form)
 
 
+def elapsed_timer(func):
+    def wrapper(*args, **kwargs):
+        start = timer()
+        response = func(*args, **kwargs)
+        if response.status_code == 200:
+            end = timer()
+            response.context_data['elapsed_time'] = round((end - start),5)
+        return response
+    return wrapper
+
+@elapsed_timer
 def post_search(request):
     form = SearchForm()
-    query = None
+    context = {
+        'form': form
+    }
     results = []
     if 'query' in request.GET:
         form = SearchForm(request.GET)
         if form.is_valid():
             query = form.cleaned_data['query']
-            results = search_query(query)
-            results_w = search_query_weighting(query)
-            results_trigram = search_with_trigram_similarity(query)
-    context = {
-        'form': form, 'query': query,
-        'results': results, 'results_w': results_w,
-        'results_trigram': results_trigram
-    }
-    return render(request, 'blog/post/search.html', context)
+            search_algorithm = form.cleaned_data.get('search_algorithm')
+            if search_algorithm == 'trigram':
+                results = search_with_trigram_similarity(query)
+            elif search_algorithm == 'weighting':
+                results = search_query_weighting(query)
+            else:
+                results = search_query(query)
+            context.update({
+                'query': query,
+                'results': results,
+            })
+    return TemplateResponse(request, 'blog/post/search.html', context)
 
 # =============================================================================
 

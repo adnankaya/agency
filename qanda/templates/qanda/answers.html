@@ -1,0 +1,18 @@
+{% load static %}
+{% load qanda_tags %}
+{% load i18n %}
+
+
+<div class="list-group">
+    {%for answer in answers%}
+    <div class="list-group-item">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{ _('Author') }} : {{answer.author }}</h5>
+            <small class="text-muted">{{ answer.updated_date|timesince }} {{_('ago')}}</small>
+        </div>
+        <p class="mb-1">{{ answer.body|markdown }}</p>
+    </div>
+    {% empty %}
+    <div class="list-group-item">{{_('There are no answers yet.')}}</div>
+    {%endfor%}
+</div>

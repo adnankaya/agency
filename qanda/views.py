@@ -3,17 +3,37 @@ from django.db.models import Count
 from django.utils.translation import gettext as _
 from django.http import HttpResponseRedirect
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.views.generic import (
+    ListView,
+    DetailView,
+    CreateView,
+    UpdateView,
+    DeleteView
+)
 # internals
 from .models import Question
 from .forms import AnswerForm
 
+
+class QuestionCreateView(CreateView):
+    model = Question
+    fields = ['text', ]
+    template_name = 'qanda/question_form.html'
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+
 def qanda(request):
     '''Question and Answers index'''
-    questions = Question.objects.all()
+    questions = Question.objects.annotate(count_answers=Count('answers'))
     context = {
-        'questions' : questions
+        'questions': questions
     }
     return render(request, 'qanda/index.html', context)
+
 
 def question_detail(request, year, month, day, slug):
     def queryset():
@@ -22,10 +42,10 @@ def question_detail(request, year, month, day, slug):
         return qs
 
     question = get_object_or_404(queryset(), slug=slug,
-                             published_date__year=year,
-                             published_date__month=month,
-                             published_date__day=day
-                             )
+                                 published_date__year=year,
+                                 published_date__month=month,
+                                 published_date__day=day
+                                 )
     # list of answers for this question
     answers = question.answers.filter()
     context = {'question': question,
@@ -47,6 +67,7 @@ def question_detail(request, year, month, day, slug):
         answer_form = AnswerForm()
         context['answer_form'] = answer_form
     return render(request, 'qanda/detail.html', context)
+
 
 def get_similar_questions(question: Question):
     # list of similar questions

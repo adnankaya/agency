@@ -1,54 +1,54 @@
 {% extends "qanda/base.html" %}
 {% load qanda_tags %}
+{% load i18n %}
 {% block title %}{{ qanda.title }}{% endblock %}
 {% block qanda_content %}
 
 <div class="row">
     <div class="col-lg-8 col-md-8-col-sm-6 col-xs-12">
-        <h1>{{ question.text }}</h1>
-        <p class="date">
-            Published {{ question.published_date }} by {{ question.author }}
-        </p>
+        <h4>{{ question.text }}</h4>
+        <div class="d-flex justify-content-between">
+            <p class="badge bg-secondary badge-pill">
+                {% with answers.count as total_answers %}
+                    {{ total_answers }} {{_('answer')}}
+                {% endwith %}
+            </p>
+            <small class="text-muted">
+                {% blocktranslate with pub_date=question.published_date author=question.author %}
+                    Published {{pub_date}} by {{author}}.
+                {% endblocktranslate %}
+            </small>
+        </div>
         {{ question.body|markdown }}
 
-        {% with answers.count as total_answers %}
-        <h2>
-            {{ total_answers }} answer{{ total_answers|pluralize }}
-        </h2>
-        {% endwith %}
 
-        {%for answer in answers%}
-        <div class="answer">
-            <p class="info">
-                answer {{forloop.counter}} by {{answer.author}}
-            </p>
-            {{answer.body|markdown}}
-        </div>
-        {% empty %}
-        <p>There are no answers yet.</p>
-        {%endfor%}
+        <section>
+            <div class="card bg-light">
+                <div class="card-body">
+                    {% include 'qanda/answer_form.html' %}
+                    {% include 'qanda/answers.html' %}
+                </div>
+            </div>
+        </section>
+        
         {% if messages %}
         {% for message in messages %}
         <div class="alert {% if message.tags %}alert-{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}danger{% else %}{{ message.tags }}{% endif %}{% endif %}"
             role="alert">{{ message }}</div>
         {% endfor %}
         {% endif %}
-        <h2>Add a new answer</h2>
-        <form method="post">
-            {{ answer_form.as_p }}
-            {% csrf_token %}
-            <p><input type="submit" value="Add answer"></p>
-        </form>
     </div>
     <div class="col-lg-4 col-md-8-col-sm-6 col-xs-12">
-        <h2>Similar questions</h2>
-        {% for question in similar_questions %}
-        <p>
-            <a href="{{ question.get_absolute_url }}">{{ question.text }}</a>
-        </p>
-        {% empty %}
-        There are no similar questions yet.
+        <div class="p-3 bg-secondary text-light">
+            <h5>{{_('Similar questions')}}</h5>
+            {% for question in similar_questions %}
+            <p>
+                <a href="{{ question.get_absolute_url }}">{{ question.text }}</a>
+            </p>
+            {% empty %}
+            <p class="">{{_('There are no similar questions yet.')}}</p>
         {% endfor %}
+        </div>
     </div>
 </div>
 {% endblock %}
