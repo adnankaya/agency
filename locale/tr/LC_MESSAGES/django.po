@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-12 17:07+0300\n"
+"POT-Creation-Date: 2021-12-12 17:41+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -100,8 +100,8 @@ msgid "Search for posts"
 msgstr "Yayınlarda ara"
 
 #: blog/templates/blog/post/search.html:12
-#: blog/templates/blog/post/search.html:19 templates/navbar.html:62
-#: templates/navbar.html:63
+#: blog/templates/blog/post/search.html:19 templates/navbar.html:65
+#: templates/navbar.html:66
 msgid "Search"
 msgstr "Ara"
 
@@ -230,32 +230,36 @@ msgstr ""
 msgid "Home"
 msgstr "Anasayfa"
 
-#: templates/navbar.html:15
+#: templates/navbar.html:16
 msgid "Blog"
 msgstr ""
 
 #: templates/navbar.html:18
-msgid "Q&A"
-msgstr "Soru&Cevap"
+msgid "Posts"
+msgstr "Yayınlar"
 
-#: templates/navbar.html:24
-msgid "Menu"
-msgstr "Menü"
-
-#: templates/navbar.html:27
+#: templates/navbar.html:19
 msgid "New Blog Post"
 msgstr "Yeni Yayın"
 
-#: templates/navbar.html:32
+#: templates/navbar.html:23
+msgid "Q&A"
+msgstr "Soru&Cevap"
+
+#: templates/navbar.html:29
+msgid "Menu"
+msgstr "Menü"
+
+#: templates/navbar.html:35
 msgid "Log Out"
 msgstr "Çıkış Yap"
 
-#: templates/navbar.html:37 users/templates/users/login.html:38
+#: templates/navbar.html:40 users/templates/users/login.html:38
 #: users/templates/users/register.html:30
 msgid "Login"
 msgstr "Giriş Yap"
 
-#: templates/navbar.html:43
+#: templates/navbar.html:46
 msgid "Language"
 msgstr "Dil"
 
@@ -297,9 +301,6 @@ msgstr "{} başarıyla kaydoldu. Giriş yapabilirsiniz."
 
 #~ msgid "Total"
 #~ msgstr "Toplam"
-
-#~ msgid "posts"
-#~ msgstr "yayınlar"
 
 #~ msgid "username or email"
 #~ msgstr "Kullanıcı adı veya email"

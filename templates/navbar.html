@@ -11,33 +11,18 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{% url 'home:index' %}">{{_('Home')}}</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'blog:post-list' %}">{{_('Blog')}}</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#"id="navbarDropdown" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">{{_('Blog')}}</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item active" href="{% url 'blog:post-list' %}">{{_('Posts')}}</a></li>
+                        <li><a class="dropdown-item" href="{% url 'blog:post-create' %}">{{_('New Blog Post')}}</a></li>
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'qanda:qanda' %}">{{_('Q&A')}}</a>
                 </li>
-                {% if user.is_authenticated %}
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        {{_('Menu')}}
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item active" href="{% url 'blog:post-create' %}">{{_('New Blog Post')}}</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="{% url 'users:logout' %}">{{_('Log Out')}}</a></li>
-                    </ul>
-                </li>
-                {% else %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'users:login' %}">{{_('Login')}}</a>
-                </li>
-                {% endif %}
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown drop-start">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         {{_('Language')}}
@@ -58,10 +43,30 @@
                     </ul>
                 </li>
             </ul>
-            <form class="d-flex" method="GET" action="{% url 'blog:post-search' %}">
+            <form class="d-flex align-items-center text-center mx-4" method="GET" action="{% url 'blog:post-search' %}">
                 <input class="form-control me-2" type="search" name="query" placeholder="{{_('Search')}}" aria-label="Search">
                 <button class="btn btn-outline-success btn-sm" type="submit">{{_('Search')}}</button>
             </form>
+            <div class="dropdown text-end">
+                {% if user.is_authenticated %}
+                <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                  <img src="https://avatars.githubusercontent.com/u/58748145?v=4" alt="mdo" width="32" height="32" class="rounded-circle">
+                </a>
+                <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+                    {% if user.is_superuser %}
+                    <li><a class="dropdown-item" href="/admin/">Admin</a></li>
+                    {% endif %}
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="{% url 'users:logout' %}">{{_('Log Out')}}</a></li>
+                </ul>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'users:login' %}">{{_('Login')}}</a>
+                </li>
+                {% endif %}
+              </div>
         </div>
     </div>
 </nav>
