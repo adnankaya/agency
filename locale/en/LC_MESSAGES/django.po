@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-12 17:41+0300\n"
+"POT-Creation-Date: 2021-12-16 22:26+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,30 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: blog/forms.py:11
+msgid "Title"
+msgstr ""
+
+#: blog/forms.py:12
+msgid "Body"
+msgstr ""
+
+#: blog/forms.py:13
+msgid "Status"
+msgstr ""
+
+#: blog/forms.py:14 blog/templates/blog/post/list.html:26
+msgid "Tags"
+msgstr ""
+
+#: blog/models.py:15
+msgid "Draft"
+msgstr ""
+
+#: blog/models.py:16
+msgid "Published"
+msgstr ""
 
 #: blog/templates/blog/base.html:18
 msgid "Subscribe to my RSS feed"
@@ -63,10 +87,6 @@ msgid ""
 "        "
 msgstr ""
 
-#: blog/templates/blog/post/list.html:26
-msgid "Tags"
-msgstr ""
-
 #: blog/templates/blog/post/list.html:35 qanda/templates/qanda/detail.html:17
 #, python-format
 msgid ""
@@ -83,58 +103,58 @@ msgstr ""
 msgid "Search for posts"
 msgstr ""
 
-#: blog/templates/blog/post/search.html:12
-#: blog/templates/blog/post/search.html:19 templates/navbar.html:65
-#: templates/navbar.html:66
+#: blog/templates/blog/post/search.html:14
+#: blog/templates/blog/post/search.html:27 templates/navbar.html:50
+#: templates/navbar.html:51
 msgid "Search"
 msgstr ""
 
-#: blog/templates/blog/post/search.html:14
+#: blog/templates/blog/post/search.html:20
 msgid "Select algorithm"
 msgstr ""
 
-#: blog/templates/blog/post/search.html:15
+#: blog/templates/blog/post/search.html:21
 msgid "Default"
 msgstr ""
 
-#: blog/templates/blog/post/search.html:16
+#: blog/templates/blog/post/search.html:22
 msgid "Weighting"
 msgstr ""
 
-#: blog/templates/blog/post/search.html:17
+#: blog/templates/blog/post/search.html:23
 msgid "Trigram"
 msgstr ""
 
-#: blog/templates/blog/post/search.html:25
+#: blog/templates/blog/post/search.html:34
 #, python-format
 msgid ""
 "\n"
-"                Posts containing \"%(_query)s\"\n"
-"            "
+"        Posts containing \"%(_query)s\"\n"
+"        "
 msgstr ""
 
-#: blog/templates/blog/post/search.html:30
+#: blog/templates/blog/post/search.html:39
 #, python-format
 msgid ""
 "\n"
-"                Found %(_total)s result.\n"
-"                "
+"        Found %(_total)s result.\n"
+"        "
 msgid_plural ""
 "\n"
-"                Found %(_total)s results.\n"
-"            "
+"        Found %(_total)s results.\n"
+"        "
 msgstr[0] ""
 msgstr[1] ""
 
-#: blog/templates/blog/post/search.html:38
+#: blog/templates/blog/post/search.html:47
 msgid "seconds"
 msgstr ""
 
-#: blog/templates/blog/post/search.html:49
+#: blog/templates/blog/post/search.html:58
 msgid "There are no results for your query."
 msgstr ""
 
-#: blog/views.py:136
+#: blog/views.py:137
 msgid "Your comment has been added"
 msgstr ""
 
@@ -221,21 +241,17 @@ msgstr ""
 msgid "Q&A"
 msgstr ""
 
-#: templates/navbar.html:29
-msgid "Menu"
+#: templates/navbar.html:28
+msgid "Language"
 msgstr ""
 
-#: templates/navbar.html:35
+#: templates/navbar.html:67
 msgid "Log Out"
 msgstr ""
 
-#: templates/navbar.html:40 users/templates/users/login.html:38
+#: templates/navbar.html:71 users/templates/users/login.html:38
 #: users/templates/users/register.html:30
 msgid "Login"
-msgstr ""
-
-#: templates/navbar.html:46
-msgid "Language"
 msgstr ""
 
 #: users/forms.py:23

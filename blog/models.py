@@ -6,13 +6,14 @@ from core.utils import generate_slug
 from publish.models import Publish
 from .managers import PublishedManager
 from ckeditor.fields import RichTextField
+from django.utils.translation import ugettext_lazy as _
 
 
 
 class Post(Publish):
     STATUS_CHOISES = (
-        ('draft', 'Draft'),
-        ('published', 'Published'),
+        ('draft', _('Draft')),
+        ('published', _('Published')),
     )
     title = models.CharField(max_length=250)
     body = RichTextField()
@@ -36,7 +37,7 @@ class Post(Publish):
         super(Post, self).save()
 
     def get_absolute_url(self):
-        return reverse('blog:post_detail',
+        return reverse('blog:post-detail',
                        args=[
                            self.published_date.year,
                            self.published_date.month,

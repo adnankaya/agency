@@ -1,3 +1,4 @@
+import datetime
 from django.views import View
 from .forms import PostForm
 from django.contrib.postgres import search
@@ -41,12 +42,15 @@ class PostListView(ListView):
 
 class PostCreateView(CreateView):
     model = Post
-    fields = ['title', 'body', 'status']
+    form_class = PostForm
     template_name = 'blog/post/new.html'
 
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+
+    def get_success_url(self):
+        return self.object.get_absolute_url()
 
 
 def elapsed_timer(func):
@@ -55,9 +59,10 @@ def elapsed_timer(func):
         response = func(*args, **kwargs)
         if response.status_code == 200:
             end = timer()
-            response.context_data['elapsed_time'] = round((end - start),5)
+            response.context_data['elapsed_time'] = round((end - start), 5)
         return response
     return wrapper
+
 
 @elapsed_timer
 def post_search(request):
@@ -115,10 +120,8 @@ def post_detail(request, year, month, day, slug):
 
     post = get_object_or_404(queryset(), slug=slug,
                              status='published',
-                             published_date__year=year,
-                             published_date__month=month,
-                             published_date__day=day
-                             )
+                             published_date__date=datetime.date(
+                                 year, month, day))
     # list of comments for this post
     comments = post.comments.filter(is_active=True)
     context = {'post': post,

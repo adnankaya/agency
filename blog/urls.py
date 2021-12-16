@@ -13,7 +13,7 @@ urlpatterns = [
     path('tag/<slug:tag_slug>/',
          views.post_list, name='post-list-by-tag'),
     path('<int:year>/<int:month>/<int:day>/<slug:slug>/',
-         views.post_detail, name='post_detail'),
+         views.post_detail, name='post-detail'),
     path('<int:post_id>/share/', views.post_share, name='post-share'),
     path('feed/', LatestPostsFeed(), name='posts-feed'),
     path('search/', views.post_search, name='post-search'),

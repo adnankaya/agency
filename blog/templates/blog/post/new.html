@@ -1,16 +1,23 @@
 {% extends "blog/base.html" %}
 {% load crispy_forms_tags %}
+{% load i18n %}
 {% block blog_content %}
     <div class="content-section">
         <form method="POST">
             {% csrf_token %}
             <fieldset class="form-group">
                 <legend class="border-bottom mb-4">Blog Post</legend>
-
-                {{ form.as_p }}
+                <!-- {{ form|crispy }} -->
+                {% for field in form %}
+                <p>
+                    {% if field.label %}{{field.label_tag}}<br/>{% endif %}
+                    {{ field }}
+                </p>
+                    {% if field.errors %}{{ field.errors }}{% endif %}
+                {% endfor%}
             </fieldset>
             <div class="form-group">
-                <button class="btn btn-outline-info" type="submit">Post</button>
+                <button class="btn btn-info" type="submit">Post</button>
             </div>
         </form>
     </div>
