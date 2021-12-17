@@ -5,13 +5,15 @@
     <h4 class="alert">
         {{_('Latest Q & A')}}
     </h4>
-    <a href="{% url 'qanda:new-question' %}" class="btn btn-warning text-dark btn-link p-3">{{_('Ask a New Question')}}</a>
+    <h4 class="p-3">
+        <a href="{% url 'qanda:new-question' %}" class="btn btn-warning text-dark shadow">{{_('Ask a New Question')}}</a>
+    </h4>
 </div>
 <div class="list-group">
     {% for question in questions %}
     <div class="list-group-item">
         <div class="d-flex justify-content-between">
-            <a href="{{question.get_absolute_url}}">
+            <a class="text-decoration-none" href="{{question.get_absolute_url}}">
                 <p>{{question.text}}</p>
             </a>
         </div>

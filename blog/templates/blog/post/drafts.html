@@ -1,0 +1,54 @@
+{% extends "blog/base.html" %}
+{% load blog_tags %}
+{% load i18n %}
+{% block title %}_('Drafts'){% endblock %}
+{% block blog_content %}
+<h2 class="text-muted my-3">{{ _('List of blog posts') }}</h2>
+{% if tag %}
+<div class="alert alert-info my-2">
+    <h5>
+        {% blocktranslate with tag_name=tag.name %}
+            Posts tagged with "{{ tag_name }}"
+        {% endblocktranslate %}
+    </h5>
+</div>
+{% endif %}
+<div class="list-group">
+    {% for post in posts %}
+    <div class="list-group-item">
+        <h4>
+            <a href="{{ post.get_absolute_url }}">
+                {{ post.title }}
+            </a>
+        </h4>
+        <div class="d-flex justify-content-between">
+            <small class="tags">
+                {{_('Tags')}}:
+                {% for tag in post.tags.all %}
+                <a href="{% url 'blog:post-list-by-tag' tag.slug %}">
+                    {{ tag.name }}
+                </a>
+                {% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </small>
+            <small class="text-muted">
+                {% blocktranslate with pub_date=post.published_date author=post.author %}
+                    Published {{pub_date}} by {{author}}.
+                {% endblocktranslate %}
+            </small>
+        </div>
+        <p>
+            {{ post.body|markdown|truncatewords_html:40 }}
+        </p>
+    </div>
+{% endfor %}
+</div>
+<!-- Since the Page object you are passing to the template is called posts , you include
+the pagination template in the post list template, passing the parameters to render
+it correctly. -->
+{% include "pagination.html" with page=posts %}
+<!-- Django's ListView generic view passes the selected page
+in a variable called page_obj , so you have to edit your post/list.html template
+accordingly to include the paginator using the right variable, as follows -->
+<!-- {% include "pagination.html" with page=page_obj %} -->
+{% endblock %}

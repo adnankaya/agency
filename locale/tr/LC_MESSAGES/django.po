@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-16 22:26+0300\n"
+"POT-Creation-Date: 2021-12-17 23:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,7 +21,7 @@ msgstr ""
 msgid "Title"
 msgstr "Başlık"
 
-#: blog/forms.py:12
+#: blog/forms.py:12 blog/forms.py:34
 msgid "Body"
 msgstr "İçerik"
 
@@ -29,9 +29,18 @@ msgstr "İçerik"
 msgid "Status"
 msgstr "Statü"
 
-#: blog/forms.py:14 blog/templates/blog/post/list.html:26
+#: blog/forms.py:14 blog/templates/blog/post/drafts.html:26
+#: blog/templates/blog/post/list.html:26
 msgid "Tags"
 msgstr "Etiketler"
+
+#: blog/forms.py:32
+msgid "Made By"
+msgstr "Yazan"
+
+#: blog/forms.py:33 users/forms.py:23
+msgid "Email"
+msgstr "E-posta"
 
 #: blog/models.py:15
 msgid "Draft"
@@ -72,21 +81,63 @@ msgstr[1] ""
 "                     Şimdiye kadar %(total_posts)s yayın yazıldı..\n"
 "                     "
 
-#: blog/templates/blog/post/detail.html:9
+#: blog/templates/blog/post/detail.html:10
 #, python-format
 msgid ""
 "\n"
-"        Published %(pub_date)s by %(author)s.\n"
+"    Published %(pub_date)s by %(author)s.\n"
 "    "
 msgstr ""
 "\n"
 "        %(author)s tarafından %(pub_date)s tarihinde yayınlandı .\n"
 "    "
 
-#: blog/templates/blog/post/list.html:6
+#: blog/templates/blog/post/detail.html:17
+msgid "Share this post"
+msgstr "Bu yayını paylaş"
+
+#: blog/templates/blog/post/detail.html:22
+msgid "comment"
+msgstr "yorum"
+
+#: blog/templates/blog/post/detail.html:31
+msgid ""
+"\n"
+"                    Commented %(updated_date)s by %(made_by)s\n"
+"                "
+msgstr ""
+"\n"
+"                    %(made_by)s tarafından %(updated_date)s tarihinde yorum yapıldı.\n"
+"                "
+
+#: blog/templates/blog/post/detail.html:39
+msgid "There are no comments yet."
+msgstr "Henüz cevap yok."
+
+#: blog/templates/blog/post/detail.html:51
+msgid "Add a new comment"
+msgstr "Yeni bir cevap ekle"
+
+#: blog/templates/blog/post/detail.html:55
+#: qanda/templates/qanda/answer_form.html:8
+#: qanda/templates/qanda/question_form.html:12
+#: users/templates/users/login.html:42 users/templates/users/register.html:27
+msgid "Submit"
+msgstr "Gönder"
+
+#: blog/templates/blog/post/detail.html:59
+msgid "Similar posts"
+msgstr "Benzer yayınlar"
+
+#: blog/templates/blog/post/detail.html:66
+msgid "There are no similar posts yet."
+msgstr "Benzer yayın yok."
+
+#: blog/templates/blog/post/drafts.html:6 blog/templates/blog/post/list.html:6
 msgid "List of blog posts"
 msgstr "Blog yayınları listesi"
 
+#: blog/templates/blog/post/drafts.html:10
 #: blog/templates/blog/post/list.html:10
 #, python-format
 msgid ""
@@ -98,7 +149,8 @@ msgstr ""
 "            \"%(tag_name)s\" ile etiketlenen yayınlar\n"
 "        "
 
-#: blog/templates/blog/post/list.html:35 qanda/templates/qanda/detail.html:17
+#: blog/templates/blog/post/drafts.html:35
+#: blog/templates/blog/post/list.html:35 qanda/templates/qanda/detail.html:20
 #, python-format
 msgid ""
 "\n"
@@ -110,8 +162,6 @@ msgstr ""
 "    "
 
 #: blog/templates/blog/post/search.html:5
-#, fuzzy
-#| msgid "Search"
 msgid "Search Page"
 msgstr "Ara"
 
@@ -120,8 +170,8 @@ msgid "Search for posts"
 msgstr "Yayınlarda ara"
 
 #: blog/templates/blog/post/search.html:14
-#: blog/templates/blog/post/search.html:27 templates/navbar.html:50
-#: templates/navbar.html:51
+#: blog/templates/blog/post/search.html:27 templates/navbar.html:53
+#: templates/navbar.html:54
 msgid "Search"
 msgstr "Ara"
 
@@ -142,11 +192,7 @@ msgid "Trigram"
 msgstr ""
 
 #: blog/templates/blog/post/search.html:34
-#, fuzzy, python-format
-#| msgid ""
-#| "\n"
-#| "                Posts containing \"%(_query)s\"\n"
-#| "            "
+#, python-format
 msgid ""
 "\n"
 "        Posts containing \"%(_query)s\"\n"
@@ -157,15 +203,7 @@ msgstr ""
 "        "
 
 #: blog/templates/blog/post/search.html:39
-#, fuzzy, python-format
-#| msgid ""
-#| "\n"
-#| "                Found %(_total)s result.\n"
-#| "                "
-#| msgid_plural ""
-#| "\n"
-#| "                Found %(_total)s results.\n"
-#| "            "
+#, python-format
 msgid ""
 "\n"
 "        Found %(_total)s result.\n"
@@ -191,7 +229,7 @@ msgstr "saniye"
 msgid "There are no results for your query."
 msgstr "Arama sorgunuz için sonuç yok."
 
-#: blog/views.py:137
+#: blog/views.py:149
 msgid "Your comment has been added"
 msgstr "Yorumunuz kaydedildi."
 
@@ -202,12 +240,6 @@ msgstr "Merhaba"
 #: qanda/templates/qanda/answer_form.html:3
 msgid "Add a new answer"
 msgstr "Yeni bir cevap ekle"
-
-#: qanda/templates/qanda/answer_form.html:8
-#: qanda/templates/qanda/question_form.html:12
-#: users/templates/users/login.html:42 users/templates/users/register.html:27
-msgid "Submit"
-msgstr "Gönder"
 
 #: qanda/templates/qanda/answers.html:10
 msgid "Author"
@@ -221,15 +253,19 @@ msgstr "önce"
 msgid "There are no answers yet."
 msgstr "Henüz cevap yok."
 
-#: qanda/templates/qanda/detail.html:13 qanda/templates/qanda/index.html:22
+#: qanda/templates/qanda/detail.html:10
+msgid "Question"
+msgstr "Soru"
+
+#: qanda/templates/qanda/detail.html:16 qanda/templates/qanda/index.html:24
 msgid "answer"
 msgstr "cevap"
 
-#: qanda/templates/qanda/detail.html:43
+#: qanda/templates/qanda/detail.html:45
 msgid "Similar questions"
 msgstr "Benzer sorular"
 
-#: qanda/templates/qanda/detail.html:49
+#: qanda/templates/qanda/detail.html:51
 msgid "There are no similar questions yet."
 msgstr "Benzer soru yok."
 
@@ -237,12 +273,12 @@ msgstr "Benzer soru yok."
 msgid "Latest Q & A"
 msgstr "Güncel Sorular & Cevaplar"
 
-#: qanda/templates/qanda/index.html:8
+#: qanda/templates/qanda/index.html:9
 #: qanda/templates/qanda/question_form.html:8
 msgid "Ask a New Question"
 msgstr "Yeni bir soru sor"
 
-#: qanda/templates/qanda/index.html:19
+#: qanda/templates/qanda/index.html:21
 msgid "Asked by"
 msgstr "Soran"
 
@@ -270,30 +306,30 @@ msgstr ""
 msgid "Posts"
 msgstr "Yayınlar"
 
-#: templates/navbar.html:19
+#: templates/navbar.html:20
+msgid "Drafts"
+msgstr "Taslaklar"
+
+#: templates/navbar.html:21
 msgid "New Blog Post"
 msgstr "Yeni Yayın"
 
-#: templates/navbar.html:23
+#: templates/navbar.html:26
 msgid "Q&A"
 msgstr "Soru&Cevap"
 
-#: templates/navbar.html:28
+#: templates/navbar.html:31
 msgid "Language"
 msgstr "Dil"
 
-#: templates/navbar.html:67
+#: templates/navbar.html:70
 msgid "Log Out"
 msgstr "Çıkış Yap"
 
-#: templates/navbar.html:71 users/templates/users/login.html:38
+#: templates/navbar.html:74 users/templates/users/login.html:38
 #: users/templates/users/register.html:30
 msgid "Login"
 msgstr "Giriş Yap"
-
-#: users/forms.py:23
-msgid "Email"
-msgstr ""
 
 #: users/forms.py:24
 msgid "Enter your email."

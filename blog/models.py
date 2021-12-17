@@ -4,7 +4,7 @@ from core.models import Base
 # internal
 from core.utils import generate_slug
 from publish.models import Publish
-from .managers import PublishedManager
+from .managers import DraftManager, PublishedManager
 from ckeditor.fields import RichTextField
 from django.utils.translation import ugettext_lazy as _
 
@@ -25,6 +25,7 @@ class Post(Publish):
                               default='draft')
 
     published = PublishedManager()
+    draft = DraftManager()
 
     class Meta:
         db_table = 't_blog'

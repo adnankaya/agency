@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-16 22:26+0300\n"
+"POT-Creation-Date: 2021-12-17 23:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,7 +22,7 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
-#: blog/forms.py:12
+#: blog/forms.py:12 blog/forms.py:34
 msgid "Body"
 msgstr ""
 
@@ -30,8 +30,17 @@ msgstr ""
 msgid "Status"
 msgstr ""
 
-#: blog/forms.py:14 blog/templates/blog/post/list.html:26
+#: blog/forms.py:14 blog/templates/blog/post/drafts.html:26
+#: blog/templates/blog/post/list.html:26
 msgid "Tags"
+msgstr ""
+
+#: blog/forms.py:32
+msgid "Made By"
+msgstr ""
+
+#: blog/forms.py:33 users/forms.py:23
+msgid "Email"
 msgstr ""
 
 #: blog/models.py:15
@@ -67,18 +76,58 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: blog/templates/blog/post/detail.html:9
+#: blog/templates/blog/post/detail.html:10
 #, python-format
 msgid ""
 "\n"
-"        Published %(pub_date)s by %(author)s.\n"
+"    Published %(pub_date)s by %(author)s.\n"
 "    "
 msgstr ""
 
-#: blog/templates/blog/post/list.html:6
+#: blog/templates/blog/post/detail.html:17
+msgid "Share this post"
+msgstr ""
+
+#: blog/templates/blog/post/detail.html:22
+msgid "comment"
+msgstr ""
+
+#: blog/templates/blog/post/detail.html:31
+#, python-format
+msgid ""
+"\n"
+"                    Commented %(updated_date)s by %(made_by)s\n"
+"                "
+msgstr ""
+
+#: blog/templates/blog/post/detail.html:39
+msgid "There are no comments yet."
+msgstr ""
+
+#: blog/templates/blog/post/detail.html:51
+msgid "Add a new comment"
+msgstr ""
+
+#: blog/templates/blog/post/detail.html:55
+#: qanda/templates/qanda/answer_form.html:8
+#: qanda/templates/qanda/question_form.html:12
+#: users/templates/users/login.html:42 users/templates/users/register.html:27
+msgid "Submit"
+msgstr ""
+
+#: blog/templates/blog/post/detail.html:59
+msgid "Similar posts"
+msgstr ""
+
+#: blog/templates/blog/post/detail.html:66
+msgid "There are no similar posts yet."
+msgstr ""
+
+#: blog/templates/blog/post/drafts.html:6 blog/templates/blog/post/list.html:6
 msgid "List of blog posts"
 msgstr ""
 
+#: blog/templates/blog/post/drafts.html:10
 #: blog/templates/blog/post/list.html:10
 #, python-format
 msgid ""
@@ -87,7 +136,8 @@ msgid ""
 "        "
 msgstr ""
 
-#: blog/templates/blog/post/list.html:35 qanda/templates/qanda/detail.html:17
+#: blog/templates/blog/post/drafts.html:35
+#: blog/templates/blog/post/list.html:35 qanda/templates/qanda/detail.html:20
 #, python-format
 msgid ""
 "\n"
@@ -104,8 +154,8 @@ msgid "Search for posts"
 msgstr ""
 
 #: blog/templates/blog/post/search.html:14
-#: blog/templates/blog/post/search.html:27 templates/navbar.html:50
-#: templates/navbar.html:51
+#: blog/templates/blog/post/search.html:27 templates/navbar.html:53
+#: templates/navbar.html:54
 msgid "Search"
 msgstr ""
 
@@ -154,7 +204,7 @@ msgstr ""
 msgid "There are no results for your query."
 msgstr ""
 
-#: blog/views.py:137
+#: blog/views.py:149
 msgid "Your comment has been added"
 msgstr ""
 
@@ -164,12 +214,6 @@ msgstr ""
 
 #: qanda/templates/qanda/answer_form.html:3
 msgid "Add a new answer"
-msgstr ""
-
-#: qanda/templates/qanda/answer_form.html:8
-#: qanda/templates/qanda/question_form.html:12
-#: users/templates/users/login.html:42 users/templates/users/register.html:27
-msgid "Submit"
 msgstr ""
 
 #: qanda/templates/qanda/answers.html:10
@@ -184,15 +228,19 @@ msgstr ""
 msgid "There are no answers yet."
 msgstr ""
 
-#: qanda/templates/qanda/detail.html:13 qanda/templates/qanda/index.html:22
+#: qanda/templates/qanda/detail.html:10
+msgid "Question"
+msgstr ""
+
+#: qanda/templates/qanda/detail.html:16 qanda/templates/qanda/index.html:24
 msgid "answer"
 msgstr ""
 
-#: qanda/templates/qanda/detail.html:43
+#: qanda/templates/qanda/detail.html:45
 msgid "Similar questions"
 msgstr ""
 
-#: qanda/templates/qanda/detail.html:49
+#: qanda/templates/qanda/detail.html:51
 msgid "There are no similar questions yet."
 msgstr ""
 
@@ -200,12 +248,12 @@ msgstr ""
 msgid "Latest Q & A"
 msgstr ""
 
-#: qanda/templates/qanda/index.html:8
+#: qanda/templates/qanda/index.html:9
 #: qanda/templates/qanda/question_form.html:8
 msgid "Ask a New Question"
 msgstr ""
 
-#: qanda/templates/qanda/index.html:19
+#: qanda/templates/qanda/index.html:21
 msgid "Asked by"
 msgstr ""
 
@@ -233,29 +281,29 @@ msgstr ""
 msgid "Posts"
 msgstr ""
 
-#: templates/navbar.html:19
+#: templates/navbar.html:20
+msgid "Drafts"
+msgstr ""
+
+#: templates/navbar.html:21
 msgid "New Blog Post"
 msgstr ""
 
-#: templates/navbar.html:23
+#: templates/navbar.html:26
 msgid "Q&A"
 msgstr ""
 
-#: templates/navbar.html:28
+#: templates/navbar.html:31
 msgid "Language"
 msgstr ""
 
-#: templates/navbar.html:67
+#: templates/navbar.html:70
 msgid "Log Out"
 msgstr ""
 
-#: templates/navbar.html:71 users/templates/users/login.html:38
+#: templates/navbar.html:74 users/templates/users/login.html:38
 #: users/templates/users/register.html:30
 msgid "Login"
-msgstr ""
-
-#: users/forms.py:23
-msgid "Email"
 msgstr ""
 
 #: users/forms.py:24

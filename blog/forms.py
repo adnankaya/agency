@@ -27,6 +27,11 @@ class EmailPostForm(forms.Form):
 
 
 class CommentForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(CommentForm, self).__init__(*args, **kwargs)
+        self.fields['made_by'].label = _('Made By')
+        self.fields['email'].label = _('Email')
+        self.fields['body'].label = _('Body')
     class Meta:
         model = Comment
         fields = ('made_by', 'email', 'body')

@@ -53,7 +53,7 @@ def question_detail(request, year, month, day, slug):
                'similar_questions': get_similar_questions(question)
                }
 
-    if request.method == 'POST':
+    if request.user.is_authenticated and request.method == 'POST':
         answer_form = AnswerForm(request.POST)
         if answer_form.is_valid():
             # Create answer object but don't save to database yet

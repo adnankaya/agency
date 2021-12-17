@@ -38,7 +38,7 @@
                                         <legend class="border-bottom mb-4">{{ _('Login') }}</legend>
                                         {{ form|crispy }}
                                     </fieldset>
-                                    <div class="form-group my-2">
+                                    <div class="form-group my-2 d-flex justify-content-between">
                                         <button class="btn btn-outline-primary" type="submit">{{_('Submit')}}</button>
                                         <small class="text-muted">
                                             <a class="ml-2 disabled"
@@ -52,7 +52,6 @@
                                             href="{% url 'users:reset-password' %}">{{_('New Password')}}</a>
                                     </small>
                                 </div>
-
                             </div>
                         </div>
                     </div>

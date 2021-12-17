@@ -1,5 +1,6 @@
 {% extends "blog/base.html" %}
 {% load blog_tags %}
+{% load crispy_forms_tags %}
 {% load i18n %}
 {% block title %}{{ post.title }}{% endblock %}
 {% block blog_content %}
@@ -7,47 +8,63 @@
 <h1>{{ post.title }}</h1>
 <p class="text-muted">
     {% blocktranslate with pub_date=post.published_date author=post.author %}
-        Published {{pub_date}} by {{author}}.
+    Published {{pub_date}} by {{author}}.
     {% endblocktranslate %}
 </p>
 {{ post.body|markdown }}
-<p>
-    <a href="{% url 'blog:post-share' post.id %}">
-        Share this post
+<div class="my-2">
+    <a class="btn btn-outline-primary" href="{% url 'blog:post-share' post.id %}">
+        {{_('Share this post')}}
     </a>
-</p>
-{% with comments.count as total_comments %}
-<h2>
-    {{ total_comments }} comment{{ total_comments|pluralize }}
-</h2>
-{% endwith %}
-<h2>Similar posts</h2>
-{% for post in similar_posts %}
-<p>
-    <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
-</p>
-{% empty %}
-There are no similar posts yet.
-{% endfor %}
-{%for comment in comments%}
-<div class="comment">
-    <p class="info">
-        Comment {{forloop.counter}} by {{comment.made_by}}
-    </p>
-    {{comment.body|linebreaks}}
 </div>
-{% empty %}
-<p>There are no comments yet.</p>
-{%endfor%}
+{% with comments.count as total_comments %}
+<small>
+    {{ total_comments }} {{_('comment')}}
+</small>
+{% endwith %}
+
+<div class="card shadow-sm">
+    <div class="list-group">
+        {%for comment in comments%}
+        <div class="list-group-item comment">
+            <p class="info">
+                {% blocktranslate with updated_date=comment.updated_date made_by=comment.made_by %}
+                    Commented {{updated_date}} by {{made_by}}
+                {% endblocktranslate %}
+            </p>
+            {{comment.body|linebreaks}}
+        </div>
+        {% empty %}
+        <div class="list-group-item list-group-item-warning comment">
+            <p class="p-3">{{_('There are no comments yet.')}}</p>
+        </div>
+        {%endfor%}
+    </div>
+</div>
 {% if messages %}
-    {% for message in messages %}
-            <div class="alert {% if message.tags %}alert-{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}danger{% else %}{{ message.tags }}{% endif %}{% endif %}" role="alert">{{ message }}</div>
-    {% endfor %}
+{% for message in messages %}
+<div class="alert {% if message.tags %}alert-{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}danger{% else %}{{ message.tags }}{% endif %}{% endif %}"
+    role="alert">{{ message }}</div>
+{% endfor %}
 {% endif %}
-<h2>Add a new comment</h2>
-<form method="post">
-    {{ comment_form.as_p }}
-    {% csrf_token %}
-    <p><input type="submit" value="Add comment"></p>
-</form>
+<div class="p-2 m-2 col-lg-6 col-md-6 col-sm-6 col-xs-12 shadow-sm" style="background-color: #eee;">
+    <h4>{{_('Add a new comment')}}</h4>
+    <form method="post">
+        {% csrf_token %}
+        {{ comment_form|crispy }}
+        <button class="btn btn-info" type="submit">{{_('Submit')}}</button>
+    </form>
+</div>
+<div class="bg-secondary shadow-sm p-2 mb-4">
+    <h5 class="text-white">{{_('Similar posts')}}</h5>
+    <div class="list-group list-group-sm">
+        {% for post in similar_posts %}
+        <a href="{{ post.get_absolute_url }}" class="list-group-item list-group-item-action">
+            {{ post.title }}
+        </a>
+        {% empty %}
+        {{_('There are no similar posts yet.')}}
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}

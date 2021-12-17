@@ -22,9 +22,9 @@ from django.views.generic import (
     UpdateView,
     DeleteView
 )
-from timeit import default_timer as timer
 from django.contrib.auth.models import User
 # internals.
+from core.utils import elapsed_timer
 from .models import Post, Comment
 from .forms import EmailPostForm, CommentForm, SearchForm
 from .search import (search_query, search_query_weighting,
@@ -40,7 +40,7 @@ class PostListView(ListView):
 # =============================================================================
 
 
-class PostCreateView(CreateView):
+class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
     form_class = PostForm
     template_name = 'blog/post/new.html'
@@ -51,17 +51,6 @@ class PostCreateView(CreateView):
 
     def get_success_url(self):
         return self.object.get_absolute_url()
-
-
-def elapsed_timer(func):
-    def wrapper(*args, **kwargs):
-        start = timer()
-        response = func(*args, **kwargs)
-        if response.status_code == 200:
-            end = timer()
-            response.context_data['elapsed_time'] = round((end - start), 5)
-        return response
-    return wrapper
 
 
 @elapsed_timer
@@ -111,6 +100,27 @@ def post_list(request, tag_slug=None):
     return render(request, 'blog/post/list.html',
                   {'page': page, 'posts': posts, 'tag': tag})
 
+@login_required
+def drafts(request, tag_slug=None):
+    allposts = Post.draft.all()
+    tag = None
+    if tag_slug:
+        tag = get_object_or_404(Tag, slug=tag_slug)
+        allposts = allposts.filter(tags__in=[tag])
+    paginator = Paginator(allposts, per_page=2)  # 2 posts per page
+    page = request.GET.get('page')
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer deliver the first page
+        posts = paginator.page(number=1)
+    except EmptyPage:
+        # If page is out of range deliver last page of results
+        posts = paginator.page(number=paginator.num_pages)
+
+    return render(request, 'blog/post/drafts.html',
+                  {'page': page, 'posts': posts, 'tag': tag})
+
 
 def post_detail(request, year, month, day, slug):
     def queryset():
@@ -119,7 +129,7 @@ def post_detail(request, year, month, day, slug):
         return qs
 
     post = get_object_or_404(queryset(), slug=slug,
-                             status='published',
+                            #  status='published',
                              published_date__date=datetime.date(
                                  year, month, day))
     # list of comments for this post

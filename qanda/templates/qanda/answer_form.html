@@ -1,11 +1,12 @@
-
 {% if user.is_authenticated %}
-<h5>{{_('Add a new answer')}}</h5>
-<form method="post">
-    {{ answer_form.as_p }}
-    {% csrf_token %}
-    <div class="form-group my-3">
-        <button class="btn btn-outline-primary" type="submit">{{_('Submit')}}</button>
-    </div>
-</form>
+<section class="my-2">
+    <h5>{{_('Add a new answer')}}</h5>
+    <form method="post">
+        {{ answer_form.as_p }}
+        {% csrf_token %}
+        <div class="form-group my-3">
+            <button class="btn btn-info" type="submit">{{_('Submit')}}</button>
+        </div>
+    </form>
+</section>
 {% endif%}

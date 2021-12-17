@@ -5,10 +5,13 @@
 {% block qanda_content %}
 
 <div class="row">
-    <div class="col-lg-8 col-md-8-col-sm-6 col-xs-12">
-        <h4>{{ question.text }}</h4>
+    <div class="col-lg-9 col-md-8-col-sm-6 col-xs-12">
+        <div class="alert alert-dark d-flex justify-content-start">
+            <b class="me-2">{{_('Question')}}:</b>
+            <p>{{ question.text|markdown }}</p>
+        </div>
         <div class="d-flex justify-content-between">
-            <p class="badge bg-secondary badge-pill">
+            <p class="badge bg-secondary badge-pill me-2">
                 {% with answers.count as total_answers %}
                     {{ total_answers }} {{_('answer')}}
                 {% endwith %}
@@ -19,12 +22,11 @@
                 {% endblocktranslate %}
             </small>
         </div>
-        {{ question.body|markdown }}
 
 
         <section>
             <div class="card bg-light">
-                <div class="card-body">
+                <div class="card-body w-100">
                     {% include 'qanda/answer_form.html' %}
                     {% include 'qanda/answers.html' %}
                 </div>
@@ -38,7 +40,7 @@
         {% endfor %}
         {% endif %}
     </div>
-    <div class="col-lg-4 col-md-8-col-sm-6 col-xs-12">
+    <div class="col-lg-3 col-md-8-col-sm-6 col-xs-12">
         <div class="p-3 bg-secondary text-light">
             <h5>{{_('Similar questions')}}</h5>
             {% for question in similar_questions %}
