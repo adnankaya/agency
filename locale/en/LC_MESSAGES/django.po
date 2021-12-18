@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-17 23:11+0000\n"
+"POT-Creation-Date: 2021-12-18 21:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,7 +39,7 @@ msgstr ""
 msgid "Made By"
 msgstr ""
 
-#: blog/forms.py:33 users/forms.py:23
+#: blog/forms.py:33 users/forms.py:24 users/forms.py:40
 msgid "Email"
 msgstr ""
 
@@ -110,8 +110,10 @@ msgstr ""
 
 #: blog/templates/blog/post/detail.html:55
 #: qanda/templates/qanda/answer_form.html:8
-#: qanda/templates/qanda/question_form.html:12
-#: users/templates/users/login.html:42 users/templates/users/register.html:27
+#: qanda/templates/qanda/question_form.html:13
+#: users/templates/users/login.html:42
+#: users/templates/users/password_reset_confirm.html:13
+#: users/templates/users/register.html:27
 msgid "Submit"
 msgstr ""
 
@@ -121,6 +123,10 @@ msgstr ""
 
 #: blog/templates/blog/post/detail.html:66
 msgid "There are no similar posts yet."
+msgstr ""
+
+#: blog/templates/blog/post/drafts.html:4 templates/navbar.html:20
+msgid "Drafts"
 msgstr ""
 
 #: blog/templates/blog/post/drafts.html:6 blog/templates/blog/post/list.html:6
@@ -137,12 +143,20 @@ msgid ""
 msgstr ""
 
 #: blog/templates/blog/post/drafts.html:35
-#: blog/templates/blog/post/list.html:35 qanda/templates/qanda/detail.html:20
+#: blog/templates/blog/post/list.html:35
 #, python-format
 msgid ""
 "\n"
 "                    Published %(pub_date)s by %(author)s.\n"
 "                "
+msgstr ""
+
+#: blog/templates/blog/post/list.html:4 templates/navbar.html:16
+msgid "Blog"
+msgstr ""
+
+#: blog/templates/blog/post/new.html:4 templates/navbar.html:21
+msgid "New Blog Post"
 msgstr ""
 
 #: blog/templates/blog/post/search.html:5
@@ -232,28 +246,41 @@ msgstr ""
 msgid "Question"
 msgstr ""
 
-#: qanda/templates/qanda/detail.html:16 qanda/templates/qanda/index.html:24
+#: qanda/templates/qanda/detail.html:16 qanda/templates/qanda/index.html:25
 msgid "answer"
 msgstr ""
 
-#: qanda/templates/qanda/detail.html:45
+#: qanda/templates/qanda/detail.html:20
+#, python-format
+msgid ""
+"\n"
+"                Published %(pub_date)s by %(author)s.\n"
+"                "
+msgstr ""
+
+#: qanda/templates/qanda/detail.html:38
 msgid "Similar questions"
 msgstr ""
 
-#: qanda/templates/qanda/detail.html:51
+#: qanda/templates/qanda/detail.html:44
 msgid "There are no similar questions yet."
 msgstr ""
 
-#: qanda/templates/qanda/index.html:6
+#: qanda/templates/qanda/index.html:3 templates/navbar.html:26
+msgid "Q&A"
+msgstr ""
+
+#: qanda/templates/qanda/index.html:7
 msgid "Latest Q & A"
 msgstr ""
 
-#: qanda/templates/qanda/index.html:9
-#: qanda/templates/qanda/question_form.html:8
+#: qanda/templates/qanda/index.html:10
+#: qanda/templates/qanda/question_form.html:3
+#: qanda/templates/qanda/question_form.html:9
 msgid "Ask a New Question"
 msgstr ""
 
-#: qanda/templates/qanda/index.html:21
+#: qanda/templates/qanda/index.html:22
 msgid "Asked by"
 msgstr ""
 
@@ -261,11 +288,11 @@ msgstr ""
 msgid "Your answer has been added"
 msgstr ""
 
-#: src/settings/base.py:94
+#: src/settings/base.py:97
 msgid "English"
 msgstr ""
 
-#: src/settings/base.py:95
+#: src/settings/base.py:98
 msgid "Turkish"
 msgstr ""
 
@@ -273,40 +300,29 @@ msgstr ""
 msgid "Home"
 msgstr ""
 
-#: templates/navbar.html:16
-msgid "Blog"
-msgstr ""
-
 #: templates/navbar.html:18
 msgid "Posts"
-msgstr ""
-
-#: templates/navbar.html:20
-msgid "Drafts"
-msgstr ""
-
-#: templates/navbar.html:21
-msgid "New Blog Post"
-msgstr ""
-
-#: templates/navbar.html:26
-msgid "Q&A"
 msgstr ""
 
 #: templates/navbar.html:31
 msgid "Language"
 msgstr ""
 
-#: templates/navbar.html:70
+#: templates/navbar.html:64
+msgid "Profile"
+msgstr ""
+
+#: templates/navbar.html:71
 msgid "Log Out"
 msgstr ""
 
-#: templates/navbar.html:74 users/templates/users/login.html:38
+#: templates/navbar.html:75 users/templates/users/login.html:38
+#: users/templates/users/password_reset_complete.html:7
 #: users/templates/users/register.html:30
 msgid "Login"
 msgstr ""
 
-#: users/forms.py:24
+#: users/forms.py:25
 msgid "Enter your email."
 msgstr ""
 
@@ -330,10 +346,39 @@ msgstr ""
 msgid "New Password"
 msgstr ""
 
+#: users/templates/users/password_reset.html:11
+#: users/templates/users/password_reset_confirm.html:9
+msgid "Reset Password"
+msgstr ""
+
+#: users/templates/users/password_reset.html:15
+msgid "Request Password Reset"
+msgstr ""
+
+#: users/templates/users/password_reset_complete.html:5
+msgid "Your password has been set."
+msgstr ""
+
+#: users/templates/users/password_reset_done.html:5
+msgid "An email has been sent with instructions to reset your password"
+msgstr ""
+
+#: users/templates/users/profile.html:16
+msgid "Profile Info"
+msgstr ""
+
+#: users/templates/users/profile.html:21
+msgid "Update"
+msgstr ""
+
 #: users/templates/users/register.html:29
 msgid "Have account ?"
 msgstr ""
 
-#: users/views.py:21
+#: users/views.py:24
 msgid "{} is registered successfully. You can log in!"
+msgstr ""
+
+#: users/views.py:72
+msgid "Your account has been updated!"
 msgstr ""

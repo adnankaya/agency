@@ -13,8 +13,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 SITE_ID = 1
 
-# Application definition
-INSTALLED_APPS = [
+DEFAULT_DJANGO_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -24,15 +23,8 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.sitemaps',
     'django.contrib.postgres',
-    # third party
-    'django_extensions',
-    'taggit',
-    'rest_framework',
-    'ckeditor',
-    'crispy_forms',
-    "crispy_bootstrap5",
-
-    # my apps
+]
+PROJECT_APPS = [
     'core',
     'blog',
     'home',
@@ -40,6 +32,16 @@ INSTALLED_APPS = [
     'publish',
     'users',
 ]
+THIRD_PARTY_APPS = [
+    'django_extensions',
+    'taggit',
+    'rest_framework',
+    'ckeditor',
+    'crispy_forms',
+    "crispy_bootstrap5",
+]
+# Application definition
+INSTALLED_APPS = DEFAULT_DJANGO_APPS + THIRD_PARTY_APPS + PROJECT_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -114,8 +116,8 @@ STATIC_URL = '/static/'
 # ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticroot')
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -128,6 +130,7 @@ EMAIL_HOST = os.environ.get('EMAIL_HOST')
 EMAIL_PORT = os.environ.get('EMAIL_PORT')
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL')
 
 ####################################
 ##  CKEDITOR CONFIGURATION ##

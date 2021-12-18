@@ -7,9 +7,12 @@ from django.contrib.auth import login, logout, authenticate
 from django.utils.translation import gettext as _
 from django.views.generic.edit import View
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
+
 # internals
 from .forms import CustomUserLoginForm, CustomUserCreationForm
 from core.models import Website
+from .forms import (UserUpdateForm, ProfileUpdateForm)
 
 
 def register_view(request):
@@ -35,7 +38,8 @@ def login_view(request):
     if form.is_valid():
         username = form.cleaned_data.get("username")
         raw_pass = form.cleaned_data.get("password")
-        user = user = authenticate(request, username=username, password=raw_pass)
+        user = user = authenticate(
+            request, username=username, password=raw_pass)
         login(request, user)
         return redirect("/")
     context = {
@@ -53,3 +57,28 @@ class LogoutView(View):
     def get(self, request, *args, **kwargs):
         logout(request)
         return redirect(settings.LOGOUT_REDIRECT_URL)
+
+
+@login_required
+def profile(request):
+    if request.method == 'POST':
+        user_form = UserUpdateForm(request.POST, instance=request.user)
+        profile_form = ProfileUpdateForm(request.POST,
+                                         request.FILES,
+                                         instance=request.user.profile)
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            messages.success(request, _('Your account has been updated!'))
+            return redirect('users:profile')
+
+    else:
+        user_form = UserUpdateForm(instance=request.user)
+        profile_form = ProfileUpdateForm(instance=request.user.profile)
+
+    context = {
+        'user_form': user_form,
+        'profile_form': profile_form
+    }
+
+    return render(request, 'users/profile.html', context)

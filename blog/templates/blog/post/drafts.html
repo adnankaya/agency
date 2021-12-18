@@ -1,7 +1,7 @@
 {% extends "blog/base.html" %}
 {% load blog_tags %}
 {% load i18n %}
-{% block title %}_('Drafts'){% endblock %}
+{% block title %}{{_('Drafts')}}{% endblock %}
 {% block blog_content %}
 <h2 class="text-muted my-3">{{ _('List of blog posts') }}</h2>
 {% if tag %}

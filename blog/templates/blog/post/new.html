@@ -1,6 +1,7 @@
 {% extends "blog/base.html" %}
 {% load crispy_forms_tags %}
 {% load i18n %}
+{% block title %}{{_('New Blog Post')}}{% endblock %}
 {% block blog_content %}
     <div class="content-section p-2 mb-4" style="background-color: #eee;">
         <form method="POST">

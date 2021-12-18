@@ -13,12 +13,12 @@
         <div class="d-flex justify-content-between">
             <p class="badge bg-secondary badge-pill me-2">
                 {% with answers.count as total_answers %}
-                    {{ total_answers }} {{_('answer')}}
+                {{ total_answers }} {{_('answer')}}
                 {% endwith %}
             </p>
             <small class="text-muted">
                 {% blocktranslate with pub_date=question.published_date author=question.author %}
-                    Published {{pub_date}} by {{author}}.
+                Published {{pub_date}} by {{author}}.
                 {% endblocktranslate %}
             </small>
         </div>
@@ -32,13 +32,6 @@
                 </div>
             </div>
         </section>
-        
-        {% if messages %}
-        {% for message in messages %}
-        <div class="alert {% if message.tags %}alert-{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}danger{% else %}{{ message.tags }}{% endif %}{% endif %}"
-            role="alert">{{ message }}</div>
-        {% endfor %}
-        {% endif %}
     </div>
     <div class="col-lg-3 col-md-8-col-sm-6 col-xs-12">
         <div class="p-3 bg-secondary text-light">
@@ -49,7 +42,7 @@
             </p>
             {% empty %}
             <p class="">{{_('There are no similar questions yet.')}}</p>
-        {% endfor %}
+            {% endfor %}
         </div>
     </div>
 </div>

@@ -1,7 +1,7 @@
 {% extends "blog/base.html" %}
 {% load blog_tags %}
 {% load i18n %}
-{% block title %}My Blog{% endblock %}
+{% block title %}{{_('Blog')}}{% endblock %}
 {% block blog_content %}
 <h2 class="text-muted my-3">{{ _('List of blog posts') }}</h2>
 {% if tag %}
@@ -15,7 +15,7 @@
 {% endif %}
 <div class="list-group">
     {% for post in posts %}
-    <div class="list-group-item">
+    <div class="list-group-item bg-light my-2 shadow-sm">
         <h4>
             <a href="{{ post.get_absolute_url }}">
                 {{ post.title }}

@@ -1,5 +1,6 @@
 {% extends "qanda/base.html" %}
 {% load crispy_forms_tags %}
+{% block title %}{{_('Ask a New Question')}}{% endblock %}
 {% block qanda_content %}
     <div class="card p-3 shadow-sm" style="background-color: rgb(230, 230, 230);">
         <form method="POST">

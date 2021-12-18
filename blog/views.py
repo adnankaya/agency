@@ -81,12 +81,12 @@ def post_search(request):
 
 
 def post_list(request, tag_slug=None):
-    allposts = Post.published.all()
+    allposts = Post.published.order_by('-comment_count')
     tag = None
     if tag_slug:
         tag = get_object_or_404(Tag, slug=tag_slug)
         allposts = allposts.filter(tags__in=[tag])
-    paginator = Paginator(allposts, per_page=2)  # 2 posts per page
+    paginator = Paginator(allposts, per_page=4)
     page = request.GET.get('page')
     try:
         posts = paginator.page(page)

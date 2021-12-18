@@ -22,3 +22,6 @@ class Website(models.Model):
 
     class Meta:
         db_table = 't_website'
+
+    def __str__(self) -> str:
+        return self.name
