@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'core.middleware.ForceDefaultLanguageMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -80,7 +81,6 @@ WSGI_APPLICATION = 'src.wsgi.application'
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'  # NOTE if you change this, stored records on database wont be accessed
 
@@ -90,6 +90,7 @@ USE_L10N = True
 
 USE_TZ = True
 
+LANGUAGE_CODE = 'en'
 LANGUAGES = (
     ('en', _('English')),
     ('tr', _('Turkish')),
