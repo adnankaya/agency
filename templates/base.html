@@ -17,16 +17,15 @@
 <body>
     <main class="container-xl">
         {% include 'navbar.html' %}
-
         <div class="container-fluid mt-4">
-            {% block root_content %}
-            {% endblock %}
             {% if messages %}
             {% for message in messages %}
             <div class="alert {% if message.tags %}alert-{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}danger{% else %}{{ message.tags }}{% endif %}{% endif %}"
                 role="alert">{{ message }}</div>
             {% endfor %}
             {% endif %}
+            {% block root_content %}
+            {% endblock %}
         </div>
     </main>
     <!-- javascript -->

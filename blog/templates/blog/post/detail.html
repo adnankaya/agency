@@ -41,12 +41,6 @@
         {%endfor%}
     </div>
 </div>
-{% if messages %}
-{% for message in messages %}
-<div class="alert {% if message.tags %}alert-{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}danger{% else %}{{ message.tags }}{% endif %}{% endif %}"
-    role="alert">{{ message }}</div>
-{% endfor %}
-{% endif %}
 <div class="p-2 m-2 col-lg-6 col-md-6 col-sm-6 col-xs-12 shadow-sm" style="background-color: #eee;">
     <h4>{{_('Add a new comment')}}</h4>
     <form method="post">
