@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, User
+from core.models import Base
 
 
 class Profile(models.Model):
@@ -8,3 +9,8 @@ class Profile(models.Model):
 
     class Meta:
         db_table = 't_profile'
+
+
+class SocialAccount(Base):
+    # TODO
+    pass

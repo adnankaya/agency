@@ -2,7 +2,7 @@
 {% load crispy_forms_tags %}
 {% load i18n %}
 {% block root_content %}
-    <div class="content-section">
+    <div class="content-section bg-light p-2 rounded bg-light p-2">
       <div class="media">
         <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
         <div class="media-body">
@@ -18,7 +18,7 @@
               {{ profile_form|crispy }}
           </fieldset>
           <div class="form-group my-2">
-              <button class="btn btn-outline-info" type="submit">{{_('Update')}}</button>
+              <button class="btn btn-primary" type="submit">{{_('Update')}}</button>
           </div>
       </form>
     </div>
