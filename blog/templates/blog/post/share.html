@@ -1,24 +1,27 @@
 {% extends "blog/base.html" %}
-{% block title %}Share a post{% endblock %}
-
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% block title %}{{_('Share a post')}}{% endblock %}
 {% block blog_content %}
-{% if sent %}
-<h1>E-mail successfully sent</h1>
-<p>
-    "{{ post.title }}" was successfully sent to {{ form.cleaned_data.to }}.
-</p>
-{% else %}
-<h1>Share "{{ post.title }}" by e-mail</h1>
-<form method="post">
-    <!-- {{ form.as_p }} -->
-    {% for field in form %}
-    <div>
-        {{ field.errors }}
-        {{ field.label_tag }} {{ field }}
-    </div>
-    {% endfor %}
-    {% csrf_token %}
-    <input type="submit" value="Send e-mail">
-</form>
-{% endif %}
+<div class="bg-light m-2 p-2 rounded">
+    {% if sent %}
+        <h3>{{_('E-mail successfully sent')}}</h3>
+        <p>
+            {% blocktranslate with post_title=post.title receiver=form.cleaned_data.to%}
+            "{{ post_title }}" was successfully sent to {{ receiver }}.
+            {% endblocktranslate%}
+        </p>
+        {% else %}
+        <h3 class="">
+            {% blocktranslate with post_title=post.title%}
+            Share "{{ post_title }}" by e-mail
+            {% endblocktranslate%}
+        </h3>
+        <form method="post">
+            {% csrf_token %}
+            {{form | crispy}}
+            <button class="btn btn-primary" type="submit">{{_('Send Email')}}</button>
+        </form>
+    {% endif %}
+</div>
 {% endblock %}
