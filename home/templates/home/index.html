@@ -2,8 +2,14 @@
 {% load i18n %}
 
 {% block home_content %}
-   
-    <h2>
-        {% translate 'Hello' %}
-    </h2>
+
+    {% include './navbar.html' %}
+    {% include './masthead.html' %}
+    {% include './services.html' %}
+    {% include './about.html' %}
+    {% include './team.html' %}
+    {% include './clients.html' %}
+    {% include './contact.html' %}
+    {% include './footer.html' %}
+
 {% endblock %}

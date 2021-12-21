@@ -29,6 +29,7 @@ urlpatterns += i18n_patterns(
     path('blog/', include('blog.urls', namespace='blog')),
     path('qanda/', include('qanda.urls', namespace='qanda')),
     path('users/', include('users.urls', namespace='users')),
+    path('company/', include('company.urls', namespace='company')),
     path('password-reset/',
          auth_views.PasswordResetView.as_view(
              template_name='users/password_reset.html'
@@ -53,3 +54,4 @@ urlpatterns += i18n_patterns(
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

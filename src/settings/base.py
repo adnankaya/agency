@@ -31,6 +31,7 @@ PROJECT_APPS = [
     'qanda',
     'publish',
     'users',
+    'company',
 ]
 THIRD_PARTY_APPS = [
     'django_extensions',
