@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from core.models import Base
 from core.utils import generate_slug
+from datetime import date
 
 
 class Image(Base):
@@ -60,14 +61,14 @@ class Service(Base):
 
     class Meta:
         db_table = 't_service'
-    
+
     def __str__(self) -> str:
         return self.name
-    
+
     def save(self, *args, **kwargs):
         self.slug = generate_slug(self.name)
-        super(Service, self).save()
-    
+        super(Service, self).save(*args, **kwargs)
+
     def get_absolute_url(self):
         return reverse('company:service-detail',
                        args=[
@@ -103,3 +104,21 @@ class AboutImage(Image):
             self.about_id, self.status,
             self.image, self.order
         )
+
+
+class Milestone(Base):
+    title = models.CharField(max_length=120)
+    body = models.TextField()
+    date_in = models.DateField(default=date.today)
+    image = models.ImageField(upload_to='milestone_images')
+    about = models.ForeignKey(About, related_name='milestones',
+                              on_delete=models.CASCADE)
+
+    class Meta:
+        db_table = 't_milestone'
+
+    def __str__(self) -> str:
+        return self.title
+
+    def save(self, *args, **kwargs):
+        super(Milestone, self).save(*args, **kwargs)

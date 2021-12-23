@@ -1,80 +1,39 @@
 {% load static %}
 {% load i18n %}
+{% load company_tags %}
 <section class="page-section" id="about">
     <div class="container">
         <div class="text-center">
-            <h2 class="section-heading text-uppercase">About</h2>
-            <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+            <h2 class="section-heading text-uppercase">{{_('About Us')}}</h2>
+            <h3 class="section-subheading text-muted">{{_('Briefly our story')}}</h3>
         </div>
         <ul class="timeline">
-            <li>
-                <div class="timeline-image"><img class="rounded-circle img-fluid" src="{%static 'assets/img/about/1.jpg'%}"
+            {% get_milestones as milestones %}
+            {% for milestone in milestones %}
+            <li class="{%if forloop.counter|divisibleby:2%}{%else%}timeline-inverted{%endif%}">
+                <div class="timeline-image"><img class="rounded-circle img-fluid" src="{{milestone.image.url}}"
                         alt="..." /></div>
                 <div class="timeline-panel">
                     <div class="timeline-heading">
-                        <h4>2009-2011</h4>
-                        <h4 class="subheading">Our Humble Beginnings</h4>
+                        <h4>{{milestone.date_in.year}}</h4>
+                        <h4 class="subheading">{{milestone.title}}</h4>
                     </div>
                     <div class="timeline-body">
-                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut
-                            voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero
-                            unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                        <p class="text-muted">{{milestone.body}}</p>
                     </div>
                 </div>
             </li>
-            <li class="timeline-inverted">
-                <div class="timeline-image"><img class="rounded-circle img-fluid" src="{%static 'assets/img/about/2.jpg'%}"
-                        alt="..." /></div>
-                <div class="timeline-panel">
-                    <div class="timeline-heading">
-                        <h4>March 2011</h4>
-                        <h4 class="subheading">An Agency is Born</h4>
-                    </div>
-                    <div class="timeline-body">
-                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut
-                            voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero
-                            unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="timeline-image"><img class="rounded-circle img-fluid" src="{%static 'assets/img/about/3.jpg'%}"
-                        alt="..." /></div>
-                <div class="timeline-panel">
-                    <div class="timeline-heading">
-                        <h4>December 2015</h4>
-                        <h4 class="subheading">Transition to Full Service</h4>
-                    </div>
-                    <div class="timeline-body">
-                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut
-                            voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero
-                            unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
-                    </div>
-                </div>
-            </li>
-            <li class="timeline-inverted">
-                <div class="timeline-image"><img class="rounded-circle img-fluid" src="{%static 'assets/img/about/4.jpg'%}"
-                        alt="..." /></div>
-                <div class="timeline-panel">
-                    <div class="timeline-heading">
-                        <h4>July 2020</h4>
-                        <h4 class="subheading">Phase Two Expansion</h4>
-                    </div>
-                    <div class="timeline-body">
-                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut
-                            voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero
-                            unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
-                    </div>
-                </div>
-            </li>
+            {%endfor%}
             <li class="timeline-inverted">
                 <div class="timeline-image">
                     <h4>
+                        {% blocktranslate %}
                         Be Part
                         <br />
                         Of Our
                         <br />
                         Story!
+                        {% endblocktranslate %}
                     </h4>
                 </div>
             </li>

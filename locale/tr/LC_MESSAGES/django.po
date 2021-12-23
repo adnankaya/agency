@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-18 21:25+0000\n"
+"POT-Creation-Date: 2021-12-22 23:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -92,15 +92,15 @@ msgstr ""
 "        %(author)s tarafından %(pub_date)s tarihinde yayınlandı .\n"
 "    "
 
-#: blog/templates/blog/post/detail.html:17
+#: blog/templates/blog/post/detail.html:19
 msgid "Share this post"
 msgstr "Bu yayını paylaş"
 
-#: blog/templates/blog/post/detail.html:22
+#: blog/templates/blog/post/detail.html:24
 msgid "comment"
 msgstr "yorum"
 
-#: blog/templates/blog/post/detail.html:31
+#: blog/templates/blog/post/detail.html:33
 #, python-format
 msgid ""
 "\n"
@@ -112,15 +112,15 @@ msgstr ""
 "yapıldı.\n"
 "                "
 
-#: blog/templates/blog/post/detail.html:39
+#: blog/templates/blog/post/detail.html:41
 msgid "There are no comments yet."
-msgstr "Henüz cevap yok."
+msgstr "Henüz yorum yok."
+
+#: blog/templates/blog/post/detail.html:47
+msgid "Add a new comment"
+msgstr "Yeni bir yorum ekle"
 
 #: blog/templates/blog/post/detail.html:51
-msgid "Add a new comment"
-msgstr "Yeni bir cevap ekle"
-
-#: blog/templates/blog/post/detail.html:55
 #: qanda/templates/qanda/answer_form.html:8
 #: qanda/templates/qanda/question_form.html:13
 #: users/templates/users/login.html:42
@@ -129,11 +129,11 @@ msgstr "Yeni bir cevap ekle"
 msgid "Submit"
 msgstr "Gönder"
 
-#: blog/templates/blog/post/detail.html:59
+#: blog/templates/blog/post/detail.html:55
 msgid "Similar posts"
 msgstr "Benzer yayınlar"
 
-#: blog/templates/blog/post/detail.html:66
+#: blog/templates/blog/post/detail.html:62
 msgid "There are no similar posts yet."
 msgstr "Benzer yayın yok."
 
@@ -169,7 +169,8 @@ msgstr ""
 "        %(author)s tarafından %(pub_date)s tarihinde yayınlandı .\n"
 "    "
 
-#: blog/templates/blog/post/list.html:4 templates/navbar.html:16
+#: blog/templates/blog/post/list.html:4 home/templates/home/navbar.html:18
+#: templates/navbar.html:16
 msgid "Blog"
 msgstr ""
 
@@ -186,8 +187,7 @@ msgid "Search for posts"
 msgstr "Yayınlarda ara"
 
 #: blog/templates/blog/post/search.html:14
-#: blog/templates/blog/post/search.html:27 templates/navbar.html:53
-#: templates/navbar.html:54
+#: blog/templates/blog/post/search.html:27 templates/navbar.html:54
 msgid "Search"
 msgstr "Ara"
 
@@ -245,13 +245,148 @@ msgstr "saniye"
 msgid "There are no results for your query."
 msgstr "Arama sorgunuz için sonuç yok."
 
+#: blog/templates/blog/post/share.html:4
+#, fuzzy
+#| msgid "Share this post"
+msgid "Share a post"
+msgstr "Bu yayını paylaş"
+
+#: blog/templates/blog/post/share.html:8
+msgid "E-mail successfully sent"
+msgstr "Mail başarıyla gönderildi"
+
+#: blog/templates/blog/post/share.html:10
+#, python-format
+msgid ""
+"\n"
+"            \"%(post_title)s\" was successfully sent to %(receiver)s.\n"
+"            "
+msgstr ""
+"\n"
+"            \"%(post_title)s\" başarıyla %(receiver)s adresine gönderildi.\n"
+"            "
+
+#: blog/templates/blog/post/share.html:16
+#, fuzzy, python-format
+#| msgid ""
+#| "\n"
+#| "                Published %(pub_date)s by %(author)s.\n"
+#| "                "
+msgid ""
+"\n"
+"            Share \"%(post_title)s\" by e-mail\n"
+"            "
+msgstr ""
+"\n"
+"            \"%(post_title)s\" yayınını email ile paylaş\n"
+"            "
+#: blog/templates/blog/post/share.html:23
+#, fuzzy
+#| msgid "Email"
+msgid "Send Email"
+msgstr "E-posta Gönder"
+
 #: blog/views.py:149
 msgid "Your comment has been added"
 msgstr "Yorumunuz kaydedildi."
 
-#: home/templates/home/index.html:7
-msgid "Hello"
-msgstr "Merhaba"
+#: company/models.py:11
+msgid "Active"
+msgstr "Aktif"
+
+#: company/models.py:12
+msgid "Passive"
+msgstr "Pasif"
+
+#: company/templates/company/base.html:11
+#: company/templates/company/services/detail.html:10
+#: company/templates/company/services/list.html:3
+#: home/templates/home/navbar.html:14 home/templates/home/services.html:6
+msgid "Services"
+msgstr "Hizmetler"
+
+#: company/templates/company/services/detail.html:45
+msgid "Previous"
+msgstr "Önceki"
+
+#: company/templates/company/services/detail.html:50
+msgid "Next"
+msgstr "sonraki"
+
+#: company/templates/company/services/list.html:7
+msgid "Our Services"
+msgstr "Hizmetlerimiz"
+
+#: home/templates/home/about.html:7 home/templates/home/navbar.html:15
+msgid "About Us"
+msgstr "Hakkımızda"
+
+#: home/templates/home/about.html:8
+msgid "Briefly our story"
+msgstr "Kısaca hikayemiz"
+
+#: home/templates/home/about.html:30
+msgid ""
+"\n"
+"                        Be Part\n"
+"                        <br />\n"
+"                        Of Our\n"
+"                        <br />\n"
+"                        Story!\n"
+"                        "
+msgstr ""
+"\n"
+"                        Hikayemizin\n"
+"                        <br />\n"
+"                        Bir Parçası\n"
+"                        <br />\n"
+"                        Olun!\n"
+"                        "
+
+#: home/templates/home/masthead.html:4
+msgid "Welcome!"
+msgstr "Hoşgeldiniz!"
+
+#: home/templates/home/masthead.html:5
+msgid "It's Nice To Meet You"
+msgstr ""
+
+#: home/templates/home/masthead.html:6
+msgid "Take a look our services"
+msgstr "Hizmetlerimize göz atın"
+
+#: home/templates/home/navbar.html:9
+msgid "Menu"
+msgstr "Menü"
+
+#: home/templates/home/navbar.html:16
+msgid "Team"
+msgstr "Ekip"
+
+#: home/templates/home/navbar.html:17
+msgid "Contact"
+msgstr "İletişim"
+
+#: home/templates/home/navbar.html:19 qanda/templates/qanda/index.html:3
+#: templates/navbar.html:26
+msgid "Q&A"
+msgstr "Soru&Cevap"
+
+#: home/templates/home/services.html:8
+msgid "Take a look our featured services."
+msgstr "Öne çıkan hizmetlerimize göz atın."
+
+#: home/templates/home/services.html:21
+msgid "Browse"
+msgstr "Keşfet"
+
+#: home/templates/home/services.html:32
+msgid "All Services"
+msgstr "Tüm Hizmetler"
+
+#: home/templates/home/team.html:7
+msgid "Our Team"
+msgstr "Ekibimiz"
 
 #: qanda/templates/qanda/answer_form.html:3
 msgid "Add a new answer"
@@ -296,10 +431,6 @@ msgstr "Benzer sorular"
 msgid "There are no similar questions yet."
 msgstr "Benzer soru yok."
 
-#: qanda/templates/qanda/index.html:3 templates/navbar.html:26
-msgid "Q&A"
-msgstr "Soru&Cevap"
-
 #: qanda/templates/qanda/index.html:7
 msgid "Latest Q & A"
 msgstr "Güncel Sorular & Cevaplar"
@@ -318,12 +449,16 @@ msgstr "Soran"
 msgid "Your answer has been added"
 msgstr "Cevabınız kaydedildi."
 
-#: src/settings/base.py:97
+#: src/settings/base.py:98
 msgid "English"
 msgstr ""
 
-#: src/settings/base.py:98
+#: src/settings/base.py:99
 msgid "Turkish"
+msgstr ""
+
+#: templates/navbar.html:4
+msgid "Site"
 msgstr ""
 
 #: templates/navbar.html:12
@@ -334,9 +469,11 @@ msgstr "Anasayfa"
 msgid "Posts"
 msgstr "Yayınlar"
 
-#: templates/navbar.html:31
-msgid "Language"
-msgstr "Dil"
+#: templates/navbar.html:53
+#, fuzzy
+#| msgid "Search for posts"
+msgid "Search on blog"
+msgstr "Yayınlarda ara"
 
 #: templates/navbar.html:64
 msgid "Profile"
@@ -346,7 +483,7 @@ msgstr "Profil"
 msgid "Log Out"
 msgstr "Çıkış Yap"
 
-#: templates/navbar.html:75 users/templates/users/login.html:38
+#: templates/navbar.html:76 users/templates/users/login.html:38
 #: users/templates/users/password_reset_complete.html:7
 #: users/templates/users/register.html:30
 msgid "Login"
@@ -413,8 +550,11 @@ msgstr "{} başarıyla kaydoldu. Giriş yapabilirsiniz."
 msgid "Your account has been updated!"
 msgstr "Hesabınız güncellendi."
 
-#~ msgid "Menu"
-#~ msgstr "Menü"
+#~ msgid "Hello"
+#~ msgstr "Merhaba"
+
+#~ msgid "Language"
+#~ msgstr "Dil"
 
 #~ msgid "Total"
 #~ msgstr "Toplam"
