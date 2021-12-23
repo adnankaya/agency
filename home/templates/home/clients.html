@@ -1,24 +1,21 @@
 {% load static %}
 {% load i18n %}
+{% load company_tags %}
 <div class="py-5">
     <div class="container">
+        <h3 class="text-center text-uppercase text-muted m-3">{{_('Our Clients')}}</h3>
         <div class="row align-items-center">
-            <div class="col-md-3 col-sm-6 my-3">
-                <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="{%static 'assets/img/logos/microsoft.svg'%}"
-                        alt="..." /></a>
+            {%get_clients as clients %}
+            {% with len=clients|length %}
+            {%for client in clients %}
+            <div class="col-xl-{{len|add:1}} col-md-{{len|add:1}} my-2">
+                <a href="{{client.website}}">
+                    <img class="img-fluid img-brand d-block mx-auto" src="{{client.image.url}}"
+                        alt="{{client.website}}" title="{{client.website}}" />
+                </a>
             </div>
-            <div class="col-md-3 col-sm-6 my-3">
-                <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="{%static 'assets/img/logos/google.svg'%}"
-                        alt="..." /></a>
-            </div>
-            <div class="col-md-3 col-sm-6 my-3">
-                <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="{%static 'assets/img/logos/facebook.svg'%}"
-                        alt="..." /></a>
-            </div>
-            <div class="col-md-3 col-sm-6 my-3">
-                <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="{%static 'assets/img/logos/ibm.svg'%}"
-                        alt="..." /></a>
-            </div>
+            {%endfor%}
+            {%endwith%}
         </div>
     </div>
 </div>

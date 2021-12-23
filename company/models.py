@@ -122,3 +122,23 @@ class Milestone(Base):
 
     def save(self, *args, **kwargs):
         super(Milestone, self).save(*args, **kwargs)
+
+
+class Client(Base):
+    website = models.URLField()
+    image = models.ImageField(upload_to='clients_images')
+
+    class Meta:
+        db_table = 't_client'
+
+    def __str__(self) -> str:
+        return self.website
+
+
+class Contact(Base):
+    full_name = models.CharField(max_length=64)
+    email = models.EmailField()
+    message = models.TextField()
+
+    class Meta:
+        db_table = 't_contact'

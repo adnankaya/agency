@@ -4,7 +4,11 @@
 <section class="page-section" id="about">
     <div class="container">
         <div class="text-center">
-            <h2 class="section-heading text-uppercase">{{_('About Us')}}</h2>
+            <a href="{%url 'company:about'%}" class="btn btn-link shadow mb-3">
+                <h3 class="section-heading text-uppercase">
+                    {{_('About Us')}}
+                </h3>
+            </a>
             <h3 class="section-subheading text-muted">{{_('Briefly our story')}}</h3>
         </div>
         <ul class="timeline">
