@@ -8,8 +8,37 @@
             <h3 class="section-subheading text-light">{{_('To contact with us please use the following methods.')}}</h3>
         </div>
         <div class="row align-items-stretch mb-5">
-            <div class="col-md-6">
-                
+            <div class="col-md-6 text-light">
+                <div class="row">
+                    <div class="col">
+                        <h3>{{_('Email Addresses')}}</h3>
+                        <ul>
+                            {%for mail in website.mails.all %}
+                            <li>{{mail.email}}</li>
+                            {%endfor%}
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <h3>{{_('Phone Numbers')}}</h3>
+                        <ul>
+                            {%for phone in website.phones.all %}
+                            <li>{{phone.number}}</li>
+                            {%endfor%}
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <h3>{{_('Addresses')}}</h3>
+                        <ul>
+                            {%for addr in website.addresses.all %}
+                            <li>{{addr.full_address}}</li>
+                            {%endfor%}
+                        </ul>
+                    </div>
+                </div>
             </div>
             <div class="col-md-6 bg-light p-2 rounded">
                 <form method="POST">

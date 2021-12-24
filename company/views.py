@@ -5,8 +5,8 @@ from django.core.paginator import (Paginator,
 from django.http.response import HttpResponseRedirect
 from django.utils.translation import ugettext_lazy as _
 from django.contrib import messages
-from company.forms import ContactForm
-from .models import About, Contact, Privacy, Service, Terms
+from company.forms import ContactMessageForm
+from .models import About, ContactMessage, Privacy, Service, Terms
 
 
 def services_list(request):
@@ -57,12 +57,12 @@ def terms(request):
 
 def contact(request):
     if request.method == 'POST':
-        form = ContactForm(request.POST)
+        form = ContactMessageForm(request.POST)
         if form.is_valid():
             form.save()
             messages.success(request, _("Your message has been sent"))
             return HttpResponseRedirect('/')
 
     else:
-        form = ContactForm()
+        form = ContactMessageForm()
     return render(request, 'home/index.html', {'form': form})

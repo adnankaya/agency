@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-22 23:58+0000\n"
+"POT-Creation-Date: 2021-12-24 21:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,7 +38,7 @@ msgstr "Etiketler"
 msgid "Made By"
 msgstr "Yazan"
 
-#: blog/forms.py:33 users/forms.py:24 users/forms.py:40
+#: blog/forms.py:33 company/forms.py:14 users/forms.py:24 users/forms.py:40
 msgid "Email"
 msgstr "E-posta"
 
@@ -120,7 +120,7 @@ msgstr "Henüz yorum yok."
 msgid "Add a new comment"
 msgstr "Yeni bir yorum ekle"
 
-#: blog/templates/blog/post/detail.html:51
+#: blog/templates/blog/post/detail.html:51 home/templates/home/contact.html:47
 #: qanda/templates/qanda/answer_form.html:8
 #: qanda/templates/qanda/question_form.html:13
 #: users/templates/users/login.html:42
@@ -267,11 +267,6 @@ msgstr ""
 "            "
 
 #: blog/templates/blog/post/share.html:16
-#, fuzzy, python-format
-#| msgid ""
-#| "\n"
-#| "                Published %(pub_date)s by %(author)s.\n"
-#| "                "
 msgid ""
 "\n"
 "            Share \"%(post_title)s\" by e-mail\n"
@@ -280,15 +275,22 @@ msgstr ""
 "\n"
 "            \"%(post_title)s\" yayınını email ile paylaş\n"
 "            "
+
 #: blog/templates/blog/post/share.html:23
-#, fuzzy
-#| msgid "Email"
 msgid "Send Email"
 msgstr "E-posta Gönder"
 
 #: blog/views.py:149
 msgid "Your comment has been added"
 msgstr "Yorumunuz kaydedildi."
+
+#: company/forms.py:12
+msgid "Full Name"
+msgstr "Ad Soyad"
+
+#: company/forms.py:15
+msgid "Message"
+msgstr "Mesaj"
 
 #: company/models.py:11
 msgid "Active"
@@ -298,6 +300,30 @@ msgstr "Aktif"
 msgid "Passive"
 msgstr "Pasif"
 
+#: company/templates/company/about/index.html:3
+#: company/templates/company/about/index.html:7
+#: home/templates/home/about.html:9 home/templates/home/navbar.html:15
+msgid "About Us"
+msgstr "Hakkımızda"
+
+#: company/templates/company/about/index.html:36
+#: company/templates/company/services/detail.html:45
+msgid "Previous"
+msgstr "Önceki"
+
+#: company/templates/company/about/index.html:40
+#: company/templates/company/services/detail.html:50
+msgid "Next"
+msgstr "Sonraki"
+
+#: company/templates/company/about/index.html:50
+msgid "Mission"
+msgstr "Misyon"
+
+#: company/templates/company/about/index.html:60
+msgid "Vision"
+msgstr "Vizyon"
+
 #: company/templates/company/base.html:11
 #: company/templates/company/services/detail.html:10
 #: company/templates/company/services/list.html:3
@@ -305,27 +331,29 @@ msgstr "Pasif"
 msgid "Services"
 msgstr "Hizmetler"
 
-#: company/templates/company/services/detail.html:45
-msgid "Previous"
-msgstr "Önceki"
-
-#: company/templates/company/services/detail.html:50
-msgid "Next"
-msgstr "sonraki"
+#: company/templates/company/privacy.html:3
+#: company/templates/company/privacy.html:7
+msgid "Privacy Policy"
+msgstr "Gizlilik Politikası"
 
 #: company/templates/company/services/list.html:7
 msgid "Our Services"
 msgstr "Hizmetlerimiz"
 
-#: home/templates/home/about.html:7 home/templates/home/navbar.html:15
-msgid "About Us"
-msgstr "Hakkımızda"
+#: company/templates/company/terms.html:3
+#: company/templates/company/terms.html:7
+msgid "Terms of Usage"
+msgstr "Kullanım Şartları"
 
-#: home/templates/home/about.html:8
+#: company/views.py:63 home/views.py:27
+msgid "Your message has been sent"
+msgstr "Mesajınız gönderildi."
+
+#: home/templates/home/about.html:12
 msgid "Briefly our story"
 msgstr "Kısaca hikayemiz"
 
-#: home/templates/home/about.html:30
+#: home/templates/home/about.html:34
 msgid ""
 "\n"
 "                        Be Part\n"
@@ -343,13 +371,39 @@ msgstr ""
 "                        Olun!\n"
 "                        "
 
-#: home/templates/home/masthead.html:4
-msgid "Welcome!"
-msgstr "Hoşgeldiniz!"
+#: home/templates/home/clients.html:6
+msgid "Our Clients"
+msgstr "Müşterilerimiz"
 
-#: home/templates/home/masthead.html:5
-msgid "It's Nice To Meet You"
+#: home/templates/home/contact.html:7
+msgid "Contact Us"
+msgstr "Bizimle İletişime Geçin"
+
+#: home/templates/home/contact.html:8
+msgid "To contact with us please use the following methods."
+msgstr "İlteişime geçmek için lütfen aşağıdaki yöntemleri kullanın."
+
+#: home/templates/home/contact.html:14
+msgid "Email Addresses"
+msgstr "E-posta Adresleri"
+
+#: home/templates/home/contact.html:24
+msgid "Phone Numbers"
+msgstr "Telefon Numaraları"
+
+#: home/templates/home/contact.html:34
+msgid "Addresses"
+msgstr "Adresler"
+
+#: home/templates/home/footer.html:7
+msgid ""
+"\n"
+"                Copyright &copy; %(website_name)s %(current_year)s\n"
+"                "
 msgstr ""
+"\n"
+"                Copyright &copy; %(website_name)s %(current_year)s\n"
+"                "
 
 #: home/templates/home/masthead.html:6
 msgid "Take a look our services"
@@ -359,9 +413,9 @@ msgstr "Hizmetlerimize göz atın"
 msgid "Menu"
 msgstr "Menü"
 
-#: home/templates/home/navbar.html:16
-msgid "Team"
-msgstr "Ekip"
+#: home/templates/home/navbar.html:16 home/templates/home/team.html:7
+msgid "Our Team"
+msgstr "Ekibimiz"
 
 #: home/templates/home/navbar.html:17
 msgid "Contact"
@@ -383,10 +437,6 @@ msgstr "Keşfet"
 #: home/templates/home/services.html:32
 msgid "All Services"
 msgstr "Tüm Hizmetler"
-
-#: home/templates/home/team.html:7
-msgid "Our Team"
-msgstr "Ekibimiz"
 
 #: qanda/templates/qanda/answer_form.html:3
 msgid "Add a new answer"
@@ -445,7 +495,7 @@ msgstr "Yeni bir soru sor"
 msgid "Asked by"
 msgstr "Soran"
 
-#: qanda/views.py:64
+#: qanda/views.py:65
 msgid "Your answer has been added"
 msgstr "Cevabınız kaydedildi."
 
@@ -549,6 +599,12 @@ msgstr "{} başarıyla kaydoldu. Giriş yapabilirsiniz."
 #: users/views.py:72
 msgid "Your account has been updated!"
 msgstr "Hesabınız güncellendi."
+
+#~ msgid "Welcome!"
+#~ msgstr "Hoşgeldiniz!"
+
+#~ msgid "Team"
+#~ msgstr "Ekip"
 
 #~ msgid "Hello"
 #~ msgstr "Merhaba"

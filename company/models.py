@@ -1,7 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
-from core.models import Base
+from core.models import Base, Website
 from core.utils import generate_slug
 from datetime import date
 
@@ -47,11 +47,16 @@ class About(Base):
 
 
 class Address(Base):
-    '''info has phone numbers, email addresses, full address'''
     full_address = models.TextField()
+    website = models.ForeignKey(Website, on_delete=models.CASCADE,
+    related_name='addresses')
+    display = models.BooleanField(default=True)
 
     class Meta:
         db_table = 't_address'
+
+    def __str__(self) -> str:
+        return self.full_address
 
 
 class Service(Base):
@@ -135,10 +140,13 @@ class Client(Base):
         return self.website
 
 
-class Contact(Base):
+class ContactMessage(Base):
     full_name = models.CharField(max_length=64)
     email = models.EmailField()
     message = models.TextField()
 
     class Meta:
-        db_table = 't_contact'
+        db_table = 't_contactmessage'
+
+    def __str__(self) -> str:
+        return self.message

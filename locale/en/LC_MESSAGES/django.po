@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-22 23:58+0000\n"
+"POT-Creation-Date: 2021-12-24 21:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,7 +39,7 @@ msgstr ""
 msgid "Made By"
 msgstr ""
 
-#: blog/forms.py:33 users/forms.py:24 users/forms.py:40
+#: blog/forms.py:33 company/forms.py:14 users/forms.py:24 users/forms.py:40
 msgid "Email"
 msgstr ""
 
@@ -108,7 +108,7 @@ msgstr ""
 msgid "Add a new comment"
 msgstr ""
 
-#: blog/templates/blog/post/detail.html:51
+#: blog/templates/blog/post/detail.html:51 home/templates/home/contact.html:47
 #: qanda/templates/qanda/answer_form.html:8
 #: qanda/templates/qanda/question_form.html:13
 #: users/templates/users/login.html:42
@@ -250,12 +250,44 @@ msgstr ""
 msgid "Your comment has been added"
 msgstr ""
 
+#: company/forms.py:12
+msgid "Full Name"
+msgstr ""
+
+#: company/forms.py:15
+msgid "Message"
+msgstr ""
+
 #: company/models.py:11
 msgid "Active"
 msgstr ""
 
 #: company/models.py:12
 msgid "Passive"
+msgstr ""
+
+#: company/templates/company/about/index.html:3
+#: company/templates/company/about/index.html:7
+#: home/templates/home/about.html:9 home/templates/home/navbar.html:15
+msgid "About Us"
+msgstr ""
+
+#: company/templates/company/about/index.html:36
+#: company/templates/company/services/detail.html:45
+msgid "Previous"
+msgstr ""
+
+#: company/templates/company/about/index.html:40
+#: company/templates/company/services/detail.html:50
+msgid "Next"
+msgstr ""
+
+#: company/templates/company/about/index.html:50
+msgid "Mission"
+msgstr ""
+
+#: company/templates/company/about/index.html:60
+msgid "Vision"
 msgstr ""
 
 #: company/templates/company/base.html:11
@@ -265,27 +297,29 @@ msgstr ""
 msgid "Services"
 msgstr ""
 
-#: company/templates/company/services/detail.html:45
-msgid "Previous"
-msgstr ""
-
-#: company/templates/company/services/detail.html:50
-msgid "Next"
+#: company/templates/company/privacy.html:3
+#: company/templates/company/privacy.html:7
+msgid "Privacy Policy"
 msgstr ""
 
 #: company/templates/company/services/list.html:7
 msgid "Our Services"
 msgstr ""
 
-#: home/templates/home/about.html:7 home/templates/home/navbar.html:15
-msgid "About Us"
+#: company/templates/company/terms.html:3
+#: company/templates/company/terms.html:7
+msgid "Terms of Usage"
 msgstr ""
 
-#: home/templates/home/about.html:8
+#: company/views.py:63 home/views.py:27
+msgid "Your message has been sent"
+msgstr ""
+
+#: home/templates/home/about.html:12
 msgid "Briefly our story"
 msgstr ""
 
-#: home/templates/home/about.html:30
+#: home/templates/home/about.html:34
 msgid ""
 "\n"
 "                        Be Part\n"
@@ -296,12 +330,36 @@ msgid ""
 "                        "
 msgstr ""
 
-#: home/templates/home/masthead.html:4
-msgid "Welcome!"
+#: home/templates/home/clients.html:6
+msgid "Our Clients"
 msgstr ""
 
-#: home/templates/home/masthead.html:5
-msgid "It's Nice To Meet You"
+#: home/templates/home/contact.html:7
+msgid "Contact Us"
+msgstr ""
+
+#: home/templates/home/contact.html:8
+msgid "To contact with us please use the following methods."
+msgstr ""
+
+#: home/templates/home/contact.html:14
+msgid "Email Addresses"
+msgstr ""
+
+#: home/templates/home/contact.html:24
+msgid "Phone Numbers"
+msgstr ""
+
+#: home/templates/home/contact.html:34
+msgid "Addresses"
+msgstr ""
+
+#: home/templates/home/footer.html:7
+#, python-format
+msgid ""
+"\n"
+"                Copyright &copy; %(website_name)s %(current_year)s\n"
+"                "
 msgstr ""
 
 #: home/templates/home/masthead.html:6
@@ -312,8 +370,8 @@ msgstr ""
 msgid "Menu"
 msgstr ""
 
-#: home/templates/home/navbar.html:16
-msgid "Team"
+#: home/templates/home/navbar.html:16 home/templates/home/team.html:7
+msgid "Our Team"
 msgstr ""
 
 #: home/templates/home/navbar.html:17
@@ -335,10 +393,6 @@ msgstr ""
 
 #: home/templates/home/services.html:32
 msgid "All Services"
-msgstr ""
-
-#: home/templates/home/team.html:7
-msgid "Our Team"
 msgstr ""
 
 #: qanda/templates/qanda/answer_form.html:3
@@ -395,7 +449,7 @@ msgstr ""
 msgid "Asked by"
 msgstr ""
 
-#: qanda/views.py:64
+#: qanda/views.py:65
 msgid "Your answer has been added"
 msgstr ""
 

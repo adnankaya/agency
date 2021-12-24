@@ -18,10 +18,36 @@ class Website(models.Model):
     is_active = models.BooleanField(default=False)
     name = models.CharField(max_length=60, default='demosite')
     attributes = models.JSONField(null=True)
-    logo = models.CharField(max_length=1024, null=True)
+    logo = models.FileField(upload_to='logos', default='default.jpg')
+    mails = models.ManyToManyField('Mail')
+    phones = models.ManyToManyField('Phone')
 
     class Meta:
         db_table = 't_website'
 
     def __str__(self) -> str:
         return self.name
+
+
+class Mail(Base):
+    email = models.EmailField()
+    slug = models.SlugField(max_length=24, unique=True)
+    display = models.BooleanField(default=True)
+
+    class Meta:
+        db_table = 't_mail'
+
+    def __str__(self) -> str:
+        return f"Mail {self.email}"
+
+
+class Phone(Base):
+    number = models.CharField(max_length=24)
+    slug = models.SlugField(max_length=24, unique=True)
+    display = models.BooleanField(default=True)
+
+    class Meta:
+        db_table = 't_phone'
+
+    def __str__(self) -> str:
+        return f"Phone {self.slug} {self.number}"

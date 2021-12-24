@@ -1,8 +1,8 @@
 {% load i18n %}
 <header class="masthead">
     <div class="container transparent-textarea">
-        <div class="masthead-subheading">{{_('Welcome!')}}</div>
-        <div class="masthead-heading text-uppercase">{{_("It's Nice To Meet You")}}</div>
+        <div class="masthead-subheading">{{website.attributes.welcome_text}}</div>
+        <div class="masthead-heading text-uppercase">{{website.attributes.slogan}}</div>
         <a class="btn btn-primary btn-xl text-uppercase text-dark" href="#services">{{_('Take a look our services')}}</a>
     </div>
 </header>
