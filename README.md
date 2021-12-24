@@ -126,3 +126,6 @@ postgres=# GRANT ALL PRIVILEGES ON DATABASE myproject TO userblog;
 
 #### Sources
 - https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-18-04
+
+#### Security
+- http://nginx.org/en/docs/http/ngx_http_limit_req_module.html
