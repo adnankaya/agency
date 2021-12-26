@@ -8,6 +8,6 @@ class Masthead(models.Model):
     masthead_text = models.CharField(max_length=120)
     motto_title = models.CharField(max_length=120)
     motto_description = models.TextField()
-    background_image = models.ImageField(upload_to='masthead_backgorund')
+    background_image = models.ImageField(upload_to='masthead_background')
     class Meta:
         db_table='t_websitemasthead'
