@@ -51,3 +51,20 @@ class Phone(Base):
 
     def __str__(self) -> str:
         return f"Phone {self.slug} {self.number}"
+
+
+class SocialAccount(Base):
+    slug = models.SlugField(max_length=24)
+    url = models.URLField()
+
+    profile = models.ForeignKey('users.Profile', related_name="socialaccounts",
+                                on_delete=models.SET_NULL, null=True, blank=True)
+    website = models.ForeignKey('core.Website', related_name="socialaccounts",
+                                on_delete=models.SET_NULL, null=True, blank=True)
+
+    class Meta:
+        db_table = 't_socialaccount'
+        unique_together = [['slug', 'url']]
+
+    def __str__(self) -> str:
+        return f"{self.slug} {self.url}"

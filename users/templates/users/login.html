@@ -12,9 +12,9 @@
                         <div class="col-lg-6 d-flex align-items-center bg-secondary">
                             <div class="text-white px-3 py-4 p-md-5 mx-md-4">
                                 {% if website %}
-                                <h4 class="mb-4">{{ website.attributes.motto.title }}</h4>
+                                <h4 class="mb-4">{{ website.masthead.motto_title }}</h4>
                                 <p class="small mb-0">
-                                    {{ website.attributes.motto.description }}
+                                    {{ website.masthead.motto_description }}
                                 </p>
                                 {% else %}
                                 <h4 class="mb-4">{{_('Welcome to the site!')}}</h4>

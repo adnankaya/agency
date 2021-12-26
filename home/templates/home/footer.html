@@ -9,13 +9,13 @@
                 {% endblocktranslate %}
             </div>
             <div class="col-lg-4 my-3 my-lg-0">
-                <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
-                <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-instagram"></i></a>
-                <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin"></i></a>
+                {% for sa in website.socialaccounts.all %}
+                    <a class="btn btn-dark btn-social mx-2" href="{{sa.url}}"><i class="fab fa-{{sa.slug}}"></i></a>
+                {%endfor%}
             </div>
             <div class="col-lg-4 text-lg-end">
-                <a class="link-dark text-decoration-none me-3" href="{% url 'company:privacy' %}">Privacy Policy</a>
-                <a class="link-dark text-decoration-none" href="{%url 'company:terms'%}">Terms of Use</a>
+                <a class="link-dark text-decoration-none me-3" href="{% url 'company:privacy' %}">{{_('Privacy Policy')}}</a>
+                <a class="link-dark text-decoration-none" href="{%url 'company:terms'%}">{{_('Terms of Use')}}</a>
             </div>
         </div>
     </div>

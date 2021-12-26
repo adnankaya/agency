@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from core.models import Mail, Phone, Website
+from core.models import Mail, Phone, SocialAccount, Website
 
 # Register your models here.
-admin.site.register([Website, Mail, Phone])
+admin.site.register([Website, Mail, Phone,SocialAccount])

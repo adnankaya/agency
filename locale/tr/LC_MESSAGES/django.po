@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-24 21:41+0000\n"
+"POT-Creation-Date: 2021-12-26 10:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -267,6 +267,7 @@ msgstr ""
 "            "
 
 #: blog/templates/blog/post/share.html:16
+#, python-format
 msgid ""
 "\n"
 "            Share \"%(post_title)s\" by e-mail\n"
@@ -332,7 +333,7 @@ msgid "Services"
 msgstr "Hizmetler"
 
 #: company/templates/company/privacy.html:3
-#: company/templates/company/privacy.html:7
+#: company/templates/company/privacy.html:7 home/templates/home/footer.html:17
 msgid "Privacy Policy"
 msgstr "Gizlilik Politikası"
 
@@ -341,8 +342,8 @@ msgid "Our Services"
 msgstr "Hizmetlerimiz"
 
 #: company/templates/company/terms.html:3
-#: company/templates/company/terms.html:7
-msgid "Terms of Usage"
+#: company/templates/company/terms.html:7 home/templates/home/footer.html:18
+msgid "Terms of Use"
 msgstr "Kullanım Şartları"
 
 #: company/views.py:63 home/views.py:27
@@ -396,6 +397,7 @@ msgid "Addresses"
 msgstr "Adresler"
 
 #: home/templates/home/footer.html:7
+#, python-format
 msgid ""
 "\n"
 "                Copyright &copy; %(website_name)s %(current_year)s\n"
@@ -406,8 +408,10 @@ msgstr ""
 "                "
 
 #: home/templates/home/masthead.html:6
-msgid "Take a look our services"
-msgstr "Hizmetlerimize göz atın"
+#, fuzzy
+#| msgid "Take a look our services"
+msgid "Take a Look Our Services"
+msgstr "Hizmetlerimize Göz Atın"
 
 #: home/templates/home/navbar.html:9
 msgid "Menu"
@@ -520,8 +524,6 @@ msgid "Posts"
 msgstr "Yayınlar"
 
 #: templates/navbar.html:53
-#, fuzzy
-#| msgid "Search for posts"
 msgid "Search on blog"
 msgstr "Yayınlarda ara"
 
@@ -599,6 +601,9 @@ msgstr "{} başarıyla kaydoldu. Giriş yapabilirsiniz."
 #: users/views.py:72
 msgid "Your account has been updated!"
 msgstr "Hesabınız güncellendi."
+
+#~ msgid "Terms of Usage"
+#~ msgstr "Kullanım Şartları"
 
 #~ msgid "Welcome!"
 #~ msgstr "Hoşgeldiniz!"

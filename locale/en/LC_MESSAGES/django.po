@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-24 21:41+0000\n"
+"POT-Creation-Date: 2021-12-26 10:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -298,7 +298,7 @@ msgid "Services"
 msgstr ""
 
 #: company/templates/company/privacy.html:3
-#: company/templates/company/privacy.html:7
+#: company/templates/company/privacy.html:7 home/templates/home/footer.html:17
 msgid "Privacy Policy"
 msgstr ""
 
@@ -307,8 +307,8 @@ msgid "Our Services"
 msgstr ""
 
 #: company/templates/company/terms.html:3
-#: company/templates/company/terms.html:7
-msgid "Terms of Usage"
+#: company/templates/company/terms.html:7 home/templates/home/footer.html:18
+msgid "Terms of Use"
 msgstr ""
 
 #: company/views.py:63 home/views.py:27
@@ -363,7 +363,7 @@ msgid ""
 msgstr ""
 
 #: home/templates/home/masthead.html:6
-msgid "Take a look our services"
+msgid "Take a Look Our Services"
 msgstr ""
 
 #: home/templates/home/navbar.html:9
