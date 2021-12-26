@@ -41,7 +41,7 @@ class Question(Publish):
 
     def save(self, *args, **kwargs):
         self.slug = generate_slug(self.text)
-        super(Question, self).save()
+        super(Question, self).save(*args, **kwargs)
 
 
 class Answer(Base):

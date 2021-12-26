@@ -1,0 +1,46 @@
+{% load static %}
+{% load i18n %}
+{% load company_tags %}
+<section class="page-section" id="about">
+    <div class="container">
+        <div class="text-center">
+            <a href="{%url 'company:about'%}" class="btn btn-link mb-3">
+                <h3 class="section-heading ">
+                    {{_('About Us')}}
+                </h3>
+            </a>
+            <h3 class="section-subheading text-muted">{{_('Briefly our story')}}</h3>
+        </div>
+        <ul class="timeline">
+            {% get_milestones as milestones %}
+            {% for milestone in milestones %}
+            <li class="{%if forloop.counter|divisibleby:2%}{%else%}timeline-inverted{%endif%}">
+                <div class="timeline-image"><img class="rounded-circle img-fluid" src="{{milestone.image.url}}"
+                        alt="..." /></div>
+                <div class="timeline-panel">
+                    <div class="timeline-heading">
+                        <h4>{{milestone.date_in.year}}</h4>
+                        <h4 class="subheading">{{milestone.title}}</h4>
+                    </div>
+                    <div class="timeline-body">
+                        <p class="text-muted">{{milestone.body}}</p>
+                    </div>
+                </div>
+            </li>
+            {%endfor%}
+            <li class="timeline-inverted">
+                <div class="timeline-image">
+                    <h4>
+                        {% blocktranslate %}
+                        Be Part
+                        <br />
+                        Of Our
+                        <br />
+                        Story!
+                        {% endblocktranslate %}
+                    </h4>
+                </div>
+            </li>
+        </ul>
+    </div>
+</section>

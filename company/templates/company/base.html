@@ -1,0 +1,18 @@
+{% extends 'base.html'%}
+{% load static %}
+{% load i18n %}
+{% include 'navbar.html' %}
+{% block root_content %}
+    {% block company_content %}
+        {% block breadcrumbs %}
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page">
+                    <a class="text-light" href="{% url 'company:services-list' %}">{{_('Services')}}</a>
+                </li>
+                </ol>
+            </nav>
+        {% endblock %}
+    
+    {% endblock %}
+{% endblock%}

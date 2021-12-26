@@ -35,7 +35,7 @@ class Post(Publish):
 
     def save(self, *args, **kwargs):
         self.slug = generate_slug(self.title)
-        super(Post, self).save()
+        super(Post, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
         return reverse('blog:post-detail',

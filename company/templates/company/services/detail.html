@@ -1,0 +1,63 @@
+{% extends "company/base.html" %}
+{% load static %}
+{% load i18n %}
+{% block company_content %}
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+    
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a class="text-warning text-decoration-none" href="{% url 'company:services-list' %}">{{_('Services')}}</a></li>
+          <li class="breadcrumb-item active" aria-current="page">{{service.name}}</li>
+        </ol>
+    </nav>
+</div>
+{% endblock %}
+<div class="row">
+    <div class="col m-2">
+        <div id="carouselService" class="carousel slide card" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                {% for service_image in service.serviceimage_set.all %}
+                <button type="button" data-bs-target="#carouselService"
+                    data-bs-slide-to="{{service_image.order}}" class="{% if forloop.first %}active{% endif %}"
+                    aria-current="{% if forloop.first %}true{% endif %}" aria-label="Slide{{service_image.order}}">
+                </button>
+                {% endfor %}
+            </div>
+            <div class="carousel-inner">
+                {% for service_image in service.serviceimage_set.all %}
+                <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                    <img src="{{service_image.image.url}}" class="d-block w-100" alt="img{{service.}}" />
+                    {% if service_image.label and service_image.description %}
+                    <div class="carousel-caption d-none d-md-block">
+                        <div class="transparent-textarea">
+                            <h5>{{service_image.label}}</h5>
+                            <p>{{service_image.description}}</p>
+                        </div>
+                    </div>
+                    {%endif%}
+                </div>
+                {% endfor %}
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselService"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">{{_('Previous')}}</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselService"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">{{_('Next')}}</span>
+            </button>
+        </div>
+        <div class="card my-3">
+            <div class="card-body">
+                <h4 class="card-title">
+                    <a href="{{ service.get_absolute_url }}">{{ service.name }}</a>
+                </h4>
+                <p class="card-text">{{service.description}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

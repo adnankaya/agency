@@ -1,0 +1,37 @@
+{% load company_tags %}
+<section class="page-section" id="services">
+    <div class="container">
+        <div class="text-center">
+            <a href="{% url 'company:services-list'%}">
+                <h2 class="section-heading">{{_('Services')}}</h2>
+            </a>
+            <h3 class="section-subheading text-muted">{{_('Take a look our featured services.')}}</h3>
+        </div>
+        <div>
+        </div>
+        {% get_services as services %}
+        <div class="row">
+            {% for service in services %}
+            <div class="col-lg-4 col-md-4 mb-2">
+                <div class="card h-100 shadow-sm">
+                    <img src="{{service.serviceimage_set.first.image.url}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{service.name}}</h5>
+                        <p class="card-text">{{service.description|truncatewords_html:32}}</p>
+                        <a href="#" class="btn btn-primary">{{_('Browse')}}</a>
+                    </div>
+                </div>
+                <h4 class="my-3"></h4>
+                <p class="text-muted"></p>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="row text-center">
+            <div class="col">
+                <a class="btn btn-outline-dark btn-lg shadow" href="{% url 'company:services-list'%}">
+                    {{_('All Services')}}
+                </a>
+            </div>
+        </div>
+    </div>
+</section>

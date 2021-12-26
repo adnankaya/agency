@@ -141,6 +141,7 @@ dmypy.json
 *.jpg
 *.png
 *.jpeg
+*.svg
 
 # static
 staticroot*

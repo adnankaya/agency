@@ -31,6 +31,7 @@ PROJECT_APPS = [
     'qanda',
     'publish',
     'users',
+    'company',
 ]
 THIRD_PARTY_APPS = [
     'django_extensions',
@@ -131,6 +132,7 @@ EMAIL_PORT = os.environ.get('EMAIL_PORT')
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL')
+CONTACT_FROM_EMAIL = os.environ.get('CONTACT_FROM_EMAIL')
 
 ####################################
 ##  CKEDITOR CONFIGURATION ##

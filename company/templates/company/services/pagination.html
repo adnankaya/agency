@@ -1,0 +1,18 @@
+{% load i18n %}
+<div class="pagination">
+    <span class="step-links text-light">
+        {% if page.has_previous %}
+        <a class="btn btn-sm btn-outline-light" href="?page={{ page.previous_page_number }}">
+            <i class="fas fa-chevron-left"></i>
+        </a>
+        {% endif %}
+        <span class="current">
+            {{ page.number }} / {{ page.paginator.num_pages }}
+        </span>
+        {% if page.has_next %}
+        <a class="btn btn-sm btn-outline-light" href="?page={{ page.next_page_number }}">
+            <i class="fas fa-chevron-right"></i>
+        </a>
+        {% endif %}
+    </span>
+</div>
