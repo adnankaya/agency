@@ -1,4 +1,16 @@
 ## Deployment Nginx, Gunicorn
+#### Github
+- Token address : https://github.com/settings/tokens
+- Github CLI installation
+```bash
+$ curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
+$ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
+$ sudo apt update
+$ sudo apt install gh
+$ gh auth login
+$ gh repo clone adnankaya/agency
+
+```
 #### Ubuntu Packages
 ```bash
 sudo apt update
@@ -78,7 +90,7 @@ sudo systemctl restart gunicorn
 
         location = /favicon.ico { access_log off; log_not_found off; }
         location /staticroot/ {
-            root /home/ubuntu/projectblog;
+            root /home/ubuntu/agency;
         }
 
         location / {

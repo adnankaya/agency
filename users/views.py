@@ -8,22 +8,62 @@ from django.utils.translation import gettext as _
 from django.views.generic.edit import View
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.contrib.sites.shortcuts import get_current_site
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.template.loader import render_to_string
+from django.utils.encoding import force_bytes, force_text
+from django.core.mail import EmailMessage
+from django.urls import reverse_lazy
 
 # internals
 from .forms import CustomUserLoginForm, CustomUserCreationForm
 from core.models import Website
 from .forms import (UserUpdateForm, ProfileUpdateForm)
+from .tokens import get_account_activation_token
+
+
+def activate(request, uidb64, token):
+    try:
+        uid = force_text(urlsafe_base64_decode(uidb64))
+        user = User.objects.get(pk=uid)
+    except(TypeError, ValueError, OverflowError, User.DoesNotExist):
+        user = None
+    if user is not None and get_account_activation_token().check_token(user, token):
+        user.is_active = True
+        user.save()
+        return render(request, 'users/email_confirmation_done.html')
+    else:
+        return HttpResponse('Activation link is invalid!')
 
 
 def register_view(request):
     form = CustomUserCreationForm(request.POST or None)
     if request.method == 'POST':
         if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            msg = _('{} is registered successfully. You can log in!'.format(username))
-            messages.success(request, msg)
-            return redirect('users:login')
+            user = form.save(commit=False)
+            user.is_active = False
+            user.save()
+            current_site = get_current_site(request)
+            _template = 'users/activate_user.html'
+            url = reverse_lazy('users:activate',
+                               kwargs={
+                                   'uidb64': urlsafe_base64_encode(force_bytes(user.pk)),
+                                   'token': get_account_activation_token().make_token(user),
+                               })
+            activate_url = '{}{}'.format(current_site.domain, url)
+            _context = {
+                'user': user,
+                'activate_url': activate_url,
+            }
+            mail_subject = _('Activate your account.')
+            message = render_to_string(_template, _context)
+            to_email = form.cleaned_data.get('email')
+            email = EmailMessage(
+                mail_subject, message, to=[to_email]
+            )
+            email.content_subtype = "html"
+            email.send()
+            return render(request, 'users/email_confirmation.html')
     context = {
         'form': form,
         'website': Website.objects.first()
@@ -47,10 +87,6 @@ def login_view(request):
         'website': Website.objects.first()
     }
     return render(request, "users/login.html", context)
-
-
-def reset_password(request):
-    return HttpResponse('Reset Password #TODO')
 
 
 class LogoutView(View):

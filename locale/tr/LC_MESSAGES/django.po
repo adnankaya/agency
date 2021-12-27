@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-26 10:45+0000\n"
+"POT-Creation-Date: 2021-12-27 23:27+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,7 +29,8 @@ msgstr "İçerik"
 msgid "Status"
 msgstr "Statü"
 
-#: blog/forms.py:14 blog/templates/blog/post/drafts.html:26
+#: blog/forms.py:14 blog/templates/blog/post/detail.html:11
+#: blog/templates/blog/post/drafts.html:26
 #: blog/templates/blog/post/list.html:26
 msgid "Tags"
 msgstr "Etiketler"
@@ -81,7 +82,7 @@ msgstr[1] ""
 "                     Şimdiye kadar %(total_posts)s yayın yazıldı..\n"
 "                     "
 
-#: blog/templates/blog/post/detail.html:10
+#: blog/templates/blog/post/detail.html:21
 #, python-format
 msgid ""
 "\n"
@@ -92,15 +93,15 @@ msgstr ""
 "        %(author)s tarafından %(pub_date)s tarihinde yayınlandı .\n"
 "    "
 
-#: blog/templates/blog/post/detail.html:19
+#: blog/templates/blog/post/detail.html:30
 msgid "Share this post"
 msgstr "Bu yayını paylaş"
 
-#: blog/templates/blog/post/detail.html:24
+#: blog/templates/blog/post/detail.html:35
 msgid "comment"
 msgstr "yorum"
 
-#: blog/templates/blog/post/detail.html:33
+#: blog/templates/blog/post/detail.html:44
 #, python-format
 msgid ""
 "\n"
@@ -112,15 +113,15 @@ msgstr ""
 "yapıldı.\n"
 "                "
 
-#: blog/templates/blog/post/detail.html:41
+#: blog/templates/blog/post/detail.html:52
 msgid "There are no comments yet."
 msgstr "Henüz yorum yok."
 
-#: blog/templates/blog/post/detail.html:47
+#: blog/templates/blog/post/detail.html:58
 msgid "Add a new comment"
 msgstr "Yeni bir yorum ekle"
 
-#: blog/templates/blog/post/detail.html:51 home/templates/home/contact.html:47
+#: blog/templates/blog/post/detail.html:62 home/templates/home/contact.html:47
 #: qanda/templates/qanda/answer_form.html:8
 #: qanda/templates/qanda/question_form.html:13
 #: users/templates/users/login.html:42
@@ -129,11 +130,11 @@ msgstr "Yeni bir yorum ekle"
 msgid "Submit"
 msgstr "Gönder"
 
-#: blog/templates/blog/post/detail.html:55
+#: blog/templates/blog/post/detail.html:66
 msgid "Similar posts"
 msgstr "Benzer yayınlar"
 
-#: blog/templates/blog/post/detail.html:62
+#: blog/templates/blog/post/detail.html:73
 msgid "There are no similar posts yet."
 msgstr "Benzer yayın yok."
 
@@ -169,7 +170,7 @@ msgstr ""
 "        %(author)s tarafından %(pub_date)s tarihinde yayınlandı .\n"
 "    "
 
-#: blog/templates/blog/post/list.html:4 home/templates/home/navbar.html:18
+#: blog/templates/blog/post/list.html:4 home/templates/home/navbar.html:23
 #: templates/navbar.html:16
 msgid "Blog"
 msgstr ""
@@ -303,7 +304,7 @@ msgstr "Pasif"
 
 #: company/templates/company/about/index.html:3
 #: company/templates/company/about/index.html:7
-#: home/templates/home/about.html:9 home/templates/home/navbar.html:15
+#: home/templates/home/about.html:9 home/templates/home/navbar.html:20
 msgid "About Us"
 msgstr "Hakkımızda"
 
@@ -328,7 +329,7 @@ msgstr "Vizyon"
 #: company/templates/company/base.html:11
 #: company/templates/company/services/detail.html:10
 #: company/templates/company/services/list.html:3
-#: home/templates/home/navbar.html:14 home/templates/home/services.html:6
+#: home/templates/home/navbar.html:19 home/templates/home/services.html:6
 msgid "Services"
 msgstr "Hizmetler"
 
@@ -411,19 +412,19 @@ msgstr ""
 msgid "Take a Look Our Services"
 msgstr "Hizmetlerimize Göz Atın"
 
-#: home/templates/home/navbar.html:9
+#: home/templates/home/navbar.html:14
 msgid "Menu"
 msgstr "Menü"
 
-#: home/templates/home/navbar.html:16 home/templates/home/team.html:7
+#: home/templates/home/navbar.html:21 home/templates/home/team.html:7
 msgid "Our Team"
 msgstr "Ekibimiz"
 
-#: home/templates/home/navbar.html:17
+#: home/templates/home/navbar.html:22
 msgid "Contact"
 msgstr "İletişim"
 
-#: home/templates/home/navbar.html:19 qanda/templates/qanda/index.html:3
+#: home/templates/home/navbar.html:24 qanda/templates/qanda/index.html:3
 #: templates/navbar.html:26
 msgid "Q&A"
 msgstr "Soru&Cevap"
@@ -533,7 +534,9 @@ msgstr "Profil"
 msgid "Log Out"
 msgstr "Çıkış Yap"
 
-#: templates/navbar.html:76 users/templates/users/login.html:38
+#: templates/navbar.html:76
+#: users/templates/users/email_confirmation_done.html:7
+#: users/templates/users/login.html:38
 #: users/templates/users/password_reset_complete.html:7
 #: users/templates/users/register.html:30
 msgid "Login"
@@ -542,6 +545,22 @@ msgstr "Giriş Yap"
 #: users/forms.py:25
 msgid "Enter your email."
 msgstr "Mail adresinizi giriniz."
+
+#: users/templates/users/activate_user.html:2
+msgid "Hi"
+msgstr "Merhaba"
+
+#: users/templates/users/activate_user.html:3
+msgid "Please click on the link to confirm your registration,"
+msgstr "Kayıt işlemini doğrulamak için lütfen bağlantıya tıklayınız."
+
+#: users/templates/users/email_confirmation.html:6
+msgid "Please confirm your email address to complete the registration"
+msgstr "Kayıt işlemini tamamlamak için lütfen email adresinizi doğrulayın."
+
+#: users/templates/users/email_confirmation_done.html:6
+msgid "Thank you for your email confirmation. Now you can login your account."
+msgstr "Email doğrulama için teşekkürler. Şimdi hesabınıza giriş yapabilirsiniz."
 
 #: users/templates/users/login.html:20 users/templates/users/register.html:44
 msgid "Welcome to the site!"
@@ -592,13 +611,16 @@ msgstr "Güncelle"
 msgid "Have account ?"
 msgstr "Hesabınız var mı?"
 
-#: users/views.py:24
-msgid "{} is registered successfully. You can log in!"
-msgstr "{} başarıyla kaydoldu. Giriş yapabilirsiniz."
+#: users/views.py:60
+msgid "Activate your account."
+msgstr "Hesabınızı aktifleştirin."
 
-#: users/views.py:72
+#: users/views.py:110
 msgid "Your account has been updated!"
 msgstr "Hesabınız güncellendi."
+
+#~ msgid "{} is registered successfully. You can log in!"
+#~ msgstr "{} başarıyla kaydoldu. Giriş yapabilirsiniz."
 
 #~ msgid "Terms of Usage"
 #~ msgstr "Kullanım Şartları"

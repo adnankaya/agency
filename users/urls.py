@@ -1,4 +1,6 @@
 from django.urls import path
+from django.conf.urls import url
+
 
 # internal
 from . import views
@@ -10,4 +12,6 @@ urlpatterns = [
     path("logout/", views.LogoutView.as_view(), name="logout"),
     path("register/", views.register_view, name="register"),
     path('profile/', views.profile, name='profile'),
+    path('activate/<uidb64>/<token>/',
+        views.activate, name='activate'),
 ]
