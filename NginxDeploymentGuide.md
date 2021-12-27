@@ -85,10 +85,19 @@ sudo systemctl restart gunicorn
             include proxy_params;
             proxy_pass http://unix:/run/gunicorn.sock;
         }
+        
+        location /media/ {
+        root /home/ubuntu/agency;
+        }
     }
 
     ```
 - `sudo ln -s /etc/nginx/sites-available/agency /etc/nginx/sites-enabled`
+- Remove default nginx file
+```bash
+sudo rm /etc/nginx/sites-enabled/default
+```
+- Test nginx
 ```bash
 # Test your Nginx configuration for syntax errors:
 sudo nginx -t

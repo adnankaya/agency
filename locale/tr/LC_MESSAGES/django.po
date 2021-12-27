@@ -408,8 +408,6 @@ msgstr ""
 "                "
 
 #: home/templates/home/masthead.html:6
-#, fuzzy
-#| msgid "Take a look our services"
 msgid "Take a Look Our Services"
 msgstr "Hizmetlerimize Göz Atın"
 

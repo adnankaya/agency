@@ -6,6 +6,17 @@
 {% block blog_content %}
 
 <h1 class="text-light">{{ post.title }}</h1>
+<div class="d-flex justify-content-between">
+    <small class="tags text-light">
+        {{_('Tags')}}:
+        {% for tag in post.tags.all %}
+        <a href="{% url 'blog:post-list-by-tag' tag.slug %}">
+            {{ tag.name }}
+        </a>
+        {% if not forloop.last %}, {% endif %}
+        {% endfor %}
+    </small>
+</div>
 <p class="text-muted">
     {% blocktranslate with pub_date=post.published_date author=post.author %}
     Published {{pub_date}} by {{author}}.
@@ -14,13 +25,13 @@
 <div class="text-light">
     {{ post.body|markdown }}
 </div>
-<div class="my-2">
+<!-- <div class="my-2">
     <a class="btn btn-outline-light" href="{% url 'blog:post-share' post.id %}">
         {{_('Share this post')}}
     </a>
-</div>
+</div> -->
 {% with comments.count as total_comments %}
-<small>
+<small class="text-light">
     {{ total_comments }} {{_('comment')}}
 </small>
 {% endwith %}
