@@ -8,3 +8,7 @@ python manage.py compilemessages
 python manage.py create_profiles
 ```
 ---
+
+#### Resources
+- https://github.com/BlackrockDigital/startbootstrap
+- https://github.com/PacktPublishing/Django-3-by-Example
