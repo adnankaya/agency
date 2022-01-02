@@ -19,6 +19,7 @@ class Website(models.Model):
     name = models.CharField(max_length=60, default='demosite')
     attributes = models.JSONField(null=True)
     logo = models.FileField(upload_to='logos', default='default.jpg')
+    favicon = models.FileField(upload_to='favicons', default='favicon.ico')
     mails = models.ManyToManyField('Mail')
     phones = models.ManyToManyField('Phone')
 

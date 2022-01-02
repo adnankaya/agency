@@ -15,7 +15,7 @@ def get_services():
 
 @register.simple_tag
 def get_milestones():
-    return Milestone.objects.all()
+    return Milestone.objects.order_by('date_in')
 
 
 @register.simple_tag
