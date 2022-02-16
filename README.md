@@ -11,7 +11,7 @@ python manage.py create_profiles
 
 ## Demo video
 
-[![Django Agency Web App Demo](https://img.youtube.com/vi/nEFGCNF6uYQ/maxresdefault.jpg)](https://www.youtube.com/watch?v=nEFGCNF6uYQ)
+[![Django Agency Web App Demo](demo.png)](https://www.youtube.com/watch?v=nEFGCNF6uYQ)
 
 ---
 #### Resources

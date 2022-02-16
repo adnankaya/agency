@@ -139,7 +139,6 @@ dmypy.json
 
 # images
 *.jpg
-*.png
 *.jpeg
 *.svg
 
